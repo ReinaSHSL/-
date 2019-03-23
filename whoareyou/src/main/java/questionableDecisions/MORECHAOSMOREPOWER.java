@@ -75,6 +75,7 @@ public class MORECHAOSMOREPOWER implements
     public static final String THE_DEFAULT_SKELETON_JSON = "questionableDecisionsResources/images/char/defaultCharacter/skeleton.json";
 
 
+
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
@@ -171,13 +172,13 @@ public class MORECHAOSMOREPOWER implements
 
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + PUTMEOUTOFMYMISERY.Enums.AAAAAAAAA.toString());
 
-        BaseMod.addCharacter(new PUTMEOUTOFMYMISERY("the Default", PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT);
+        BaseMod.addCharacter(new PUTMEOUTOFMYMISERY("kdstkl;sd", PUTMEOUTOFMYMISERY.Enums.AAAAAAAAA),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, PUTMEOUTOFMYMISERY.Enums.AAAAAAAAA);
 
         receiveEditPotions();
-        logger.info("Added " + PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT.toString());
+        logger.info("Added " + PUTMEOUTOFMYMISERY.Enums.AAAAAAAAA.toString());
     }
 
 
