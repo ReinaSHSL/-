@@ -35,9 +35,9 @@ public class MORECHAOSMOREPOWER implements
     private static String modID;
 
 
-    private static final String MODNAME = "Default Mod";
-    private static final String AUTHOR = "Gremious";
-    private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
+    private static final String MODNAME = "sksaAS(AFa9sf08asr32ESA";
+    private static final String AUTHOR = "r̴̩̬͒̐̾͐̍͝͝ë̴̘̣̱̘̪̄͊͌͗͋͝I̶̫͎̲͕͓̿N̵̝͎͕̥͐̾͗̈́̽͜͜à̵̻̮̣͚̅̾̀";
+    private static final String DESCRIPTION = "ŵ̴̧̢̨̡̛̛̟̖͓̘̰̗̜̞̯̦̲͕̹͕͎̦͇̳͚͚͕͖͔͖͙̭̘͍̼͙̭̯͈̘̭̞̯͎͉̘̩͕̱̟̼̮̽̅͌͐̓̏̄̓͋̽̓̉̊͆̀̎͌̌͒͗̋̆̍̽̈́̔̅́̇̾͒̾́̀̍̌͋͋̈͘̚͜͝͝͝͝͝͝͠͝͝͝a̶̡̧̢̛̛͎̯̠̬̖͙̰͓̣̼͔̦͉̖̤̜̳̖͔̱͓̙̲̩͙̯̪̠̯͕̻̫͇̬̳̪͖̺̩̣̪̞͙̼̮̼̖͖̻̲̤̻̟͚͈͉͛̃̎̀̾̓̆̓͂̌̀͋̈̉̀̂̃͐̈́͊̆̏̋̃̔̇́̃̄̐͗͆̅͆̒͐̓̎̉̈́͋̓͋̾͛͑́̏̑͘͘̚̕̕͘̕͠͝͠͝͝K̷̨̨̢̢̡̡̧̧̧̢̨̝̰̱̹̞̹̜͓͍̯̯̟̪̣͎̫͉̟͙̥̠͈͕̲̣̮̹̩̠̲̦̪̹̝̦̗͔̻͍͖̙̖̘͚͍̯͎̺͇̜̗̗̠̠͈̝͔̱̹̲͍͚̦͙̥̳͔͕̩̭͔͛́̓̏̓̃̑̍͋̓͂͘ͅͅê̶̺͖͖̒͛̅̌͊̆̇̋͗͊͒͆̓̄̌̋̂͒̍͗͆̏̒̿̀̈́́̏̅̅͊̊͗̓̎͘̕͝ ̸̢̡̨̢̛͙̻͖̙̤͖̻͈̗̹̘̻̟̜̘̝̍̒̃͑̏̔͗́̿̓͛̒͌̌̇͐̔̑̈́̾̎͋̏͋̈́̐̋͛̇̄̍͋̒̂̄͛̎͐͊̕̕͘͝͝͠ͅU̶̧̨̨̡̨͕͉̺͙͓̳̹͕͔͔̻̜̱̘̩̯̼̰̹̪̻͙̠̰̥͎̘͚̓͐́̋̄͂̅̏̎̏̌̊́͂͆͂̽̓̌̊̈́̕͜͜͠͠͝͝͠Ṗ̸̧̧̧̧̧̢̨̨̨̮̝̞̳͔̟͓͉̩̦̘̭̖̣̩̬̬̻̩͕̜̖͙̹̣̯̞̖̝̙̰̥̳͓̥̩̣͉̒̈͂̀̓̋̃̉̃̆́͂͋́͒̾̔͐̉͊́̄́͑́̇̓̅̿̉͌̓̊́̓̅̈́̒̿̐̀̽̾́̋͊̚͘͜͠͝͠͝͝͝ͅP̷͚̃͗́̂̈́͒͌͂̃͋͌̅̉̓̐̓͐̇̐̄͊̆͋͛̌̎̉̾͘̕͝";
 
 
     public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
