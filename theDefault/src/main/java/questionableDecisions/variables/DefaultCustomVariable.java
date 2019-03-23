@@ -1,10 +1,10 @@
-package theDefault.variables;
+package questionableDecisions.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-import static theDefault.DefaultMod.makeID;
+import static questionableDecisions.MORECHAOSMOREPOWER.makeID;
 
 public class DefaultCustomVariable extends DynamicVariable
 {   // Custom Dynamic Variables are what you do if you need your card text to display a cool, changing number that the base game doesn't provide.

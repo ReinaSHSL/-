@@ -1,4 +1,4 @@
-package theDefault.patches.relics;
+package questionableDecisions.patches.relics;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;

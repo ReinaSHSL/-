@@ -1,4 +1,4 @@
-package theDefault.util;
+package questionableDecisions.util;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -20,7 +20,7 @@ public class TextureLoader {
 
     /**
      * @param textureString - String path to the texture you want to load relative to resources,
-     *                      Example: "theDefaultResources/images/ui/missing_texture.png"
+     *                      Example: "questionableDecisionsResources/images/ui/missing_texture.png"
      * @return <b>com.badlogic.gdx.graphics.Texture</b> - The texture from the path provided
      */
     public static Texture getTexture(final String textureString) {
@@ -29,7 +29,7 @@ public class TextureLoader {
                 loadTexture(textureString);
             } catch (GdxRuntimeException e) {
                 logger.error("Could not find texture: " + textureString);
-                return getTexture("theDefaultResources/images/ui/missing_texture.png");
+                return getTexture("questionableDecisionsResources/images/ui/missing_texture.png");
             }
         }
         return textures.get(textureString);
@@ -43,7 +43,7 @@ public class TextureLoader {
      * @throws GdxRuntimeException
      */
     private static void loadTexture(final String textureString) throws GdxRuntimeException {
-        logger.info("DefaultMod | Loading Texture: " + textureString);
+        logger.info("MORECHAOSMOREPOWER | Loading Texture: " + textureString);
         Texture texture = new Texture(textureString);
         texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
         textures.put(textureString, texture);

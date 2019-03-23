@@ -1,4 +1,4 @@
-package theDefault.relics;
+package questionableDecisions.relics;
 
 import basemod.BaseMod;
 import basemod.abstracts.CustomBottleRelic;
@@ -15,15 +15,15 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
-import theDefault.DefaultMod;
-import theDefault.patches.relics.BottledPlaceholderField;
-import theDefault.util.TextureLoader;
+import questionableDecisions.MORECHAOSMOREPOWER;
+import questionableDecisions.patches.relics.BottledPlaceholderField;
+import questionableDecisions.util.TextureLoader;
 
 import java.util.Iterator;
 import java.util.function.Predicate;
 
-import static theDefault.DefaultMod.makeRelicOutlinePath;
-import static theDefault.DefaultMod.makeRelicPath;
+import static questionableDecisions.MORECHAOSMOREPOWER.makeRelicOutlinePath;
+import static questionableDecisions.MORECHAOSMOREPOWER.makeRelicPath;
 
 public class BottledPlaceholderRelic extends CustomRelic implements CustomBottleRelic, CustomSavable<Integer> {
     // This file will show you how to use 2 things - (Mostly) The Custom Bottle Relic and the Custom Savable - they go hand in hand.
@@ -43,7 +43,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
 
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("BottledPlaceholderRelic");
+    public static final String ID = MORECHAOSMOREPOWER.makeID("BottledPlaceholderRelic");
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("BottledPlaceholder.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("BottledPlaceholder.png"));
 

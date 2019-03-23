@@ -1,13 +1,13 @@
-package theDefault.relics;
+package questionableDecisions.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import theDefault.DefaultMod;
-import theDefault.util.TextureLoader;
+import questionableDecisions.MORECHAOSMOREPOWER;
+import questionableDecisions.util.TextureLoader;
 
-import static theDefault.DefaultMod.makeRelicOutlinePath;
-import static theDefault.DefaultMod.makeRelicPath;
+import static questionableDecisions.MORECHAOSMOREPOWER.makeRelicOutlinePath;
+import static questionableDecisions.MORECHAOSMOREPOWER.makeRelicPath;
 
 public class PlaceholderRelic extends CustomRelic {
 
@@ -18,7 +18,7 @@ public class PlaceholderRelic extends CustomRelic {
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("PlaceholderRelic");
+    public static final String ID = MORECHAOSMOREPOWER.makeID("PlaceholderRelic");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
