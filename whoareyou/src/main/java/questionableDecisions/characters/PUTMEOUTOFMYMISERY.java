@@ -225,4 +225,7 @@ public class PUTMEOUTOFMYMISERY extends CustomPlayer {
         return TEXT[2];
     }
 
+    public void onCardPlay() {
+
+    }
 }
