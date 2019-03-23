@@ -2,7 +2,6 @@ package theDefault.variables;
 
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import theDefault.cards.AbstractDefaultCard;
 
 import static theDefault.DefaultMod.makeID;
 
