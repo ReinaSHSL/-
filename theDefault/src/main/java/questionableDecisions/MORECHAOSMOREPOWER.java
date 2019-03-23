@@ -3,26 +3,18 @@ package questionableDecisions;
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModPanel;
-import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import questionableDecisions.characters.TheDefault;
-import questionableDecisions.relics.BottledPlaceholderRelic;
-import questionableDecisions.relics.DefaultClickableRelic;
-import questionableDecisions.relics.PlaceholderRelic;
-import questionableDecisions.relics.PlaceholderRelic2;
+import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 import questionableDecisions.util.IDCheckDontTouchPls;
 import questionableDecisions.util.TextureLoader;
 
@@ -119,9 +111,9 @@ public class MORECHAOSMOREPOWER implements
 
         logger.info("Done subscribing");
 
-        logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY.toString());
 
-        BaseMod.addColor(TheDefault.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
@@ -179,13 +171,13 @@ public class MORECHAOSMOREPOWER implements
 
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT.toString());
 
-        BaseMod.addCharacter(new TheDefault("the Default", TheDefault.Enums.THE_DEFAULT),
-                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, TheDefault.Enums.THE_DEFAULT);
+        BaseMod.addCharacter(new PUTMEOUTOFMYMISERY("the Default", PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT),
+                THE_DEFAULT_BUTTON, THE_DEFAULT_PORTRAIT, PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT);
 
         receiveEditPotions();
-        logger.info("Added " + TheDefault.Enums.THE_DEFAULT.toString());
+        logger.info("Added " + PUTMEOUTOFMYMISERY.Enums.THE_DEFAULT.toString());
     }
 
 
@@ -215,17 +207,6 @@ public class MORECHAOSMOREPOWER implements
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
-
-
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), TheDefault.Enums.COLOR_GRAY);
-
-
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
-
-
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
         logger.info("Done adding relics!");
     }
 

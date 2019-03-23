@@ -9,6 +9,7 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.blue.MeteorStrike;
 import com.megacrit.cardcrawl.cards.red.Strike_Red;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -19,24 +20,20 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import questionableDecisions.MORECHAOSMOREPOWER;
-import questionableDecisions.relics.DefaultClickableRelic;
-import questionableDecisions.relics.PlaceholderRelic;
-import questionableDecisions.relics.PlaceholderRelic2;
 
 import java.util.ArrayList;
 
 import static questionableDecisions.MORECHAOSMOREPOWER.*;
-import static questionableDecisions.characters.TheDefault.Enums.COLOR_GRAY;
+import static questionableDecisions.characters.PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in MORECHAOSMOREPOWER-character-Strings.json in the resources
 
-public class TheDefault extends CustomPlayer {
+public class PUTMEOUTOFMYMISERY extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(MORECHAOSMOREPOWER.class.getName());
 
     // =============== CHARACTER ENUMERATORS =================
@@ -72,7 +69,7 @@ public class TheDefault extends CustomPlayer {
 
     // =============== STRINGS =================
 
-    private static final String ID = makeID("DefaultCharacter");
+    private static final String ID = makeID("???");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
@@ -99,7 +96,7 @@ public class TheDefault extends CustomPlayer {
 
     // =============== CHARACTER CLASS START =================
 
-    public TheDefault(String name, PlayerClass setClass) {
+    public PUTMEOUTOFMYMISERY(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
                 "questionableDecisionsResources/images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
@@ -156,6 +153,8 @@ public class TheDefault extends CustomPlayer {
 
         logger.info("Begin loading starter Deck Strings");
 
+        retVal.add(MeteorStrike.ID);
+
         return retVal;
     }
 
@@ -163,13 +162,6 @@ public class TheDefault extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(PlaceholderRelic.ID);
-        retVal.add(PlaceholderRelic2.ID);
-        retVal.add(DefaultClickableRelic.ID);
-
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 
         return retVal;
     }
@@ -235,7 +227,7 @@ public class TheDefault extends CustomPlayer {
     // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheDefault(name, chosenClass);
+        return new PUTMEOUTOFMYMISERY(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.
