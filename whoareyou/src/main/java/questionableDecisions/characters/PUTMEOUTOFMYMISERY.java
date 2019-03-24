@@ -1,6 +1,10 @@
 package questionableDecisions.characters;
 
+import basemod.BaseMod;
+import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
+import basemod.animations.AbstractAnimation;
+import basemod.animations.SpineAnimation;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -25,6 +29,7 @@ import org.apache.logging.log4j.Logger;
 import questionableDecisions.MORECHAOSMOREPOWER;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static questionableDecisions.MORECHAOSMOREPOWER.*;
 import static questionableDecisions.characters.PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY;
@@ -58,6 +63,13 @@ public class PUTMEOUTOFMYMISERY extends CustomPlayer {
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
 
+    private static final AbstractAnimation DEFECT_ANI = new SpineAnimation("images/characters/defect/idle/skeleton.atlas", "images/characters/defect/idle/skeleton.json", 1.0f);
+    private static final AbstractAnimation IC_ANI = new SpineAnimation("images/characters/ironclad/idle/skeleton.atlas", "images/characters/ironclad/idle/skeleton.json", 1.0f);
+    private static final AbstractAnimation SILENT_ANI = new SpineAnimation("images/characters/theSilent/idle/skeleton.atlas", "images/characters/theSilent/idle/skeleton.json", 1.0f);
+
+    private static ArrayList<AbstractAnimation> listOfAnimations = new ArrayList<>();
+
+    private static Random r = new Random();
 
     public static final String[] orbTextures = {
             "questionableDecisionsResources/images/char/defaultCharacter/orb/layer1.png",
@@ -99,6 +111,16 @@ public class PUTMEOUTOFMYMISERY extends CustomPlayer {
         dialogX = (drawX + 0.0F * Settings.scale);
         dialogY = (drawY + 220.0F * Settings.scale);
 
+        listOfAnimations.add(DEFECT_ANI);
+        listOfAnimations.add(SILENT_ANI);
+        listOfAnimations.add(IC_ANI);
+
+        for (AbstractPlayer p : CardCrawlGame.characterManager.getAllCharacters()) {
+            if (p instanceof CustomPlayer) {
+                CustomPlayer pl = (CustomPlayer) p;
+                listOfAnimations.add((AbstractAnimation)ReflectionHacks.getPrivate(pl, CustomPlayer.class, "animation"));
+            }
+        }
 
     }
 
@@ -226,6 +248,11 @@ public class PUTMEOUTOFMYMISERY extends CustomPlayer {
     }
 
     public void onCardPlay() {
-
+        int rng = r.nextInt((listOfAnimations.size() - 1) + 1);
+        AbstractAnimation a = listOfAnimations.get(rng);
+        animation = a;
+        if (a instanceof SpineAnimation) {
+            loadAnimation(((SpineAnimation) a).atlasUrl, ((SpineAnimation) a).skeletonUrl, ((SpineAnimation) a).scale);
+        }
     }
 }
