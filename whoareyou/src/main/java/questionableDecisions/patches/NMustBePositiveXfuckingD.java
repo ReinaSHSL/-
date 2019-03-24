@@ -5,7 +5,11 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.daily.mods.ColorlessCards;
+import com.megacrit.cardcrawl.daily.mods.Diverse;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.random.Random;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 import questionableDecisions.MORECHAOSMOREPOWER;
@@ -14,6 +18,7 @@ import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 import java.util.ArrayList;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.returnRandomCurse;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcCurseCardPool;
 
 
 public class NMustBePositiveXfuckingD {
@@ -44,77 +49,75 @@ public class NMustBePositiveXfuckingD {
 
         @SpirePatch(
                 clz = AbstractDungeon.class,
-                method = "getCard",
-                paramtypez = {
-                        AbstractCard.CardRarity.class
-                }
+                method = "initializeCardPools"
         )
-        public static class LSD {
-                public static SpireReturn<AbstractCard> Prefix(AbstractCard.CardRarity useless) {
+        public static class Heroin {
+                public static SpireReturn Prefix(AbstractDungeon __instance) {
                         if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
-                                if (useless == AbstractCard.CardRarity.CURSE) {
-                                        return SpireReturn.Return(AbstractDungeon.curseCardPool.getRandomCard(true));
+                                AbstractDungeon.commonCardPool.clear();
+                                AbstractDungeon.uncommonCardPool.clear();
+                                AbstractDungeon.rareCardPool.clear();
+                                AbstractDungeon.colorlessCardPool.clear();
+                                AbstractDungeon.curseCardPool.clear();
+                                ArrayList<AbstractCard> tmpPool = new ArrayList<>();
+                                if (ModHelper.isModEnabled(ColorlessCards.ID)) {
+                                        CardLibrary.addColorlessCards(tmpPool);
                                 }
-                                AbstractCard c = MORECHAOSMOREPOWER.generateCard();
-                                return SpireReturn.Return(c);
-                        }
-                        return SpireReturn.Continue();
-                }
-        }
 
-        @SpirePatch(
-                clz = AbstractDungeon.class,
-                method = "getCard",
-                paramtypez = {
-                        AbstractCard.CardRarity.class,
-                        Random.class
-                }
-        )
-        public static class BathSalts {
-                public static SpireReturn<AbstractCard> Prefix(AbstractCard.CardRarity useless, Random useless2) {
-                        if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
-                                if (useless == AbstractCard.CardRarity.CURSE) {
-                                        return SpireReturn.Return(AbstractDungeon.curseCardPool.getRandomCard(true));
+                                if (ModHelper.isModEnabled(Diverse.ID)) {
+                                        CardLibrary.addRedCards(tmpPool);
+                                        CardLibrary.addGreenCards(tmpPool);
+                                        CardLibrary.addBlueCards(tmpPool);
                                 }
-                                AbstractCard c = MORECHAOSMOREPOWER.generateCard();
-                                return SpireReturn.Return(c);
-                        }
-                        return SpireReturn.Continue();
-                }
-        }
+                                for (int i = 0; i < 100; i++) {
+                                        AbstractCard c = MORECHAOSMOREPOWER.generateCard();
+                                        c.rarity = AbstractCard.CardRarity.COMMON;
+                                        tmpPool.add(c);
+                                }
+                                for (int i = 0; i < 100; i++) {
+                                        AbstractCard c = MORECHAOSMOREPOWER.generateCard();
+                                        c.rarity = AbstractCard.CardRarity.UNCOMMON;
+                                        tmpPool.add(c);
+                                }
+                                for (int i = 0; i < 100; i++) {
+                                        AbstractCard c = MORECHAOSMOREPOWER.generateCard();
+                                        c.rarity = AbstractCard.CardRarity.RARE;
+                                        tmpPool.add(c);
+                                }
+                                for (AbstractCard c : tmpPool) {
+                                        switch (c.rarity) {
+                                                case CURSE:
+                                                        AbstractDungeon.curseCardPool.addToTop(c);
+                                                case COMMON:
+                                                        AbstractDungeon.commonCardPool.addToTop(c);
+                                                case UNCOMMON:
+                                                        AbstractDungeon.uncommonCardPool.addToTop(c);
+                                                case RARE:
+                                                        AbstractDungeon.rareCardPool.addToTop(c);
+                                        }
 
-        @SpirePatch(
-                clz = AbstractDungeon.class,
-                method = "getCardWithoutRng",
-                paramtypez = {
-                        AbstractCard.CardRarity.class,
-                }
-        )
-        public static class Benzos {
-                public static SpireReturn<AbstractCard> Prefix(AbstractCard.CardRarity useless) {
-                        if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
-                                if (useless == AbstractCard.CardRarity.CURSE) {
-                                        return SpireReturn.Return(returnRandomCurse());
                                 }
-                                AbstractCard c = MORECHAOSMOREPOWER.generateCard();
-                                return SpireReturn.Return(c);
-                        }
-                        return SpireReturn.Continue();
-                }
-        }
+                                
+                                AbstractDungeon.srcColorlessCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
+                                AbstractDungeon.srcCurseCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
+                                AbstractDungeon.srcRareCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
+                                AbstractDungeon.srcUncommonCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
+                                AbstractDungeon.srcCommonCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
+                                
+                                for (AbstractCard c : AbstractDungeon.curseCardPool.group) {
+                                        srcCurseCardPool.addToTop(c);
+                                }
+                                for (AbstractCard c : AbstractDungeon.commonCardPool.group) {
+                                        srcCurseCardPool.addToTop(c);
+                                }
+                                for (AbstractCard c : AbstractDungeon.uncommonCardPool.group) {
+                                        srcCurseCardPool.addToTop(c);
+                                }
+                                for (AbstractCard c : AbstractDungeon.rareCardPool.group) {
+                                        srcCurseCardPool.addToTop(c);
+                                }
 
-        @SpirePatch(
-                clz = AbstractDungeon.class,
-                method = "getCardFromPool"
-        )
-        public static class Meth {
-                public static SpireReturn<AbstractCard> Prefix(AbstractCard.CardRarity rarity, AbstractCard.CardType type, boolean useRng) {
-                        if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
-                                if (rarity == AbstractCard.CardRarity.CURSE) {
-                                        return SpireReturn.Return(returnRandomCurse());
-                                }
-                                AbstractCard c = MORECHAOSMOREPOWER.generateCard();
-                                return SpireReturn.Return(c);
+                                return SpireReturn.Return(null);
                         }
                         return SpireReturn.Continue();
                 }
