@@ -204,8 +204,4 @@ public abstract class AbstractWtfCard extends CustomCard {
         misc = Integer.valueOf(s);
     }
 
-    @Override
-    public AbstractCard makeCopy() {
-
-    }
 }
