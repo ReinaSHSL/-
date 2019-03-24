@@ -53,9 +53,6 @@ public abstract class AbstractWtfCard extends CustomCard {
         this.magicNumber = this.baseMagicNumber = magic;
         this.wtfMagicNumber = this.baseWtfMagicNumber = wtfMagic;
 
-        Collections.sort(componentList);
-
-        setMisc();
     }
 
     public String buildID() {

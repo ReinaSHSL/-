@@ -80,12 +80,12 @@ public class MORECHAOSMOREPOWER implements
         WHY_MULTI_DRAW,
         WHY_CHAOS,
         WHY_CHAOS_UPGRADED,
-        WHY_NO_MANA,
-        WHY_REDUCE_HAND_SIZE,
-        WHY_NO_ENERGY,
-        WHY_RESTORE_HANDSIZE,
-        WHY_FLASH,
-        WHY_REMOVE_THIS_POWER,
+        POWER_NO_MANA,
+        POWER_REDUCE_HAND_SIZE,
+        POWER_NO_ENERGY,
+        POWER_RESTORE_HANDSIZE,
+        POWER_FLASH,
+        POWER_REMOVE_THIS_POWER,
         WHY_EXHAUST
     }
 
@@ -316,7 +316,7 @@ public class MORECHAOSMOREPOWER implements
     public static AbstractCard generateCard() {
         ArrayList<Components> allPossibleCardDesc = new ArrayList<>();
         for (MORECHAOSMOREPOWER.Components cd : MORECHAOSMOREPOWER.Components.values()) {
-            if (!cd.name().startsWith("WHEN_")) {
+            if (!cd.name().startsWith("WHEN_") && (!cd.name().startsWith("POWER_"))) {
                 allPossibleCardDesc.add(cd);
             }
         }
@@ -353,6 +353,7 @@ public class MORECHAOSMOREPOWER implements
         c.magicNumber = c.baseMagicNumber;
         c.wtfMagicNumber = c.baseWtfMagicNumber;
         c.buildID();
+        Collections.sort(c.componentList);
         return c;
     }
 
