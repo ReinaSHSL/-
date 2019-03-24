@@ -213,4 +213,22 @@ public abstract class AbstractWtfCard extends CustomCard {
         c.componentList.addAll(componentList);
         return c;
     }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractWtfCard c = new AbstractWtfCard(this.cardID, cost, rarity, costUpgradeAmount, damageUpgradeAmount, blockUpgradeAmount, magicUpgradeAmount, wtfMagicUpgradeAmount, baseDamage, baseBlock, baseMagicNumber, baseWtfMagicNumber) { };
+        c.componentList.addAll(componentList);
+        c.exhaust = exhaust;
+        c.isInnate = isInnate;
+        c.isEthereal = isEthereal;
+        for (int i = 0; i < timesUpgraded; i++) {
+            c.upgrade();
+        }
+        c.upgraded = upgraded;
+        c.freeToPlayOnce = freeToPlayOnce;
+        c.misc = misc;
+        c.name = name;
+        c.costForTurn = costForTurn;
+        return c;
+    }
 }
