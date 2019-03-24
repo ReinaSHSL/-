@@ -322,7 +322,7 @@ public class MORECHAOSMOREPOWER implements
         }
         Collections.shuffle(allPossibleCardDesc);
         int weight = 80;
-        int loseWeight = 30;
+        int loseWeight = 40;
 
         int cost = AbstractDungeon.cardRng.random(3);
         int d = getDamage(cost);
@@ -344,7 +344,7 @@ public class MORECHAOSMOREPOWER implements
                 c.componentList.add(de);
                 weight -= loseWeight;
                 if (weight <= 0) {
-                    weight = 5;
+                    weight = 2;
                 }
             }
         }

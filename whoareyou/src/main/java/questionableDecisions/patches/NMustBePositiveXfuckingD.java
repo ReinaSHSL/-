@@ -5,10 +5,10 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.random.Random;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 
-import java.util.Random;
 
 
 public class NMustBePositiveXfuckingD {
@@ -17,7 +17,7 @@ public class NMustBePositiveXfuckingD {
                 clz = CardGroup.class,
                 method = "getRandomCard",
                 paramtypez = {
-                        Random.class
+                       Random.class
                 }
         )
         public static class Meth {
@@ -70,7 +70,7 @@ public class NMustBePositiveXfuckingD {
                         boolean.class
                 }
         )
-        public static class Fetanyl  {
+        public static class Fentanyl  {
                 public static SpireReturn<AbstractCard> Prefix(CardGroup __instance, AbstractCard.CardType useless, boolean useless2) {
                         if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
                                 return SpireReturn.Return(MORECHAOSMOREPOWER.generateCard());
