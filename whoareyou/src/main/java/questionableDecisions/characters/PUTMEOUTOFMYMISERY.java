@@ -37,56 +37,7 @@ import static questionableDecisions.characters.PUTMEOUTOFMYMISERY.Enums.COLOR_GR
 
 public class PUTMEOUTOFMYMISERY extends CustomPlayer {
 
-    public enum Components {
-        WHY_FIRST_CARD,
-        WHY_INNATE,
-        WHY_ETHEREAL,
-        WHEN_DAMAGE_GIVE,
-        WHEN_DAMAGE_GIVE_FINAL,
-        WHEN_DAMAGE_FINAL_REC,
-        WHEN_DAMAGE_REC,
-        WHEN_START_TURN,
-        WHEN_DURING_TURN,
-        WHEN_POST_DRAW,
-        WHEN_END_OF_TURN,
-        WHEN_END_OF_ROUND,
-        WHEN_AOE,
-        WHEN_HEAL,
-        WHEN_ATTACKED,
-        WHEN_ATTACK,
-        WHEN_DO_DMG,
-        WHEN_EVOKE,
-        WHEN_PLAY_CARD,
-        WHEN_USE_CARD,
-        WHEN_PLAY_AFTER,
-        WHEN_SPEC_TRIG,
-        WHEN_DIE,
-        WHEN_CHANNEL,
-        WHEN_ENERGY_GAIN,
-        WHEN_EXHAUST,
-        WHEN_MODIFY_BLOCK,
-        WHEN_ON_GAIN_BLOCK,
-        WHEN_ON_PLAYER_GAIN_BLOCK,
-        WHEN_GAIN_CHARGE,
-        WHEN_REMOVE,
-        WHEN_ENERGY_CHARGE,
-        WHEN_DRAW_OR_DISCARD,
-        WHEN_AFTER_CARD_PLAY,
-        WHEN_INITIAL,
-        WHY_AOE_DAMAGE_X,
-        WHY_BLOCK,
-        WHY_SINGLE_DRAW,
-        WHY_MULTI_DRAW,
-        WHY_CHAOS,
-        WHY_CHAOS_UPGRADED,
-        WHY_NO_MANA,
-        WHY_REDUCE_HAND_SIZE,
-        WHY_NO_ENERGY,
-        WHY_RESTORE_HANDSIZE,
-        WHY_FLASH,
-        WHY_REMOVE_THIS_POWER,
-        WHY_EXHAUST
-    }
+
     
     public static final Logger logger = LogManager.getLogger(MORECHAOSMOREPOWER.class.getName());
 
