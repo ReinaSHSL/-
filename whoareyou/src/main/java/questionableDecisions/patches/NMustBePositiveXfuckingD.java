@@ -109,13 +109,16 @@ public class NMustBePositiveXfuckingD {
                                         srcCurseCardPool.addToTop(c);
                                 }
                                 for (AbstractCard c : AbstractDungeon.commonCardPool.group) {
-                                        srcCurseCardPool.addToTop(c);
+                                        srcCommonCardPool.addToTop(c);
                                 }
                                 for (AbstractCard c : AbstractDungeon.uncommonCardPool.group) {
-                                        srcCurseCardPool.addToTop(c);
+                                        srcUncommonCardPool.addToTop(c);
                                 }
                                 for (AbstractCard c : AbstractDungeon.rareCardPool.group) {
-                                        srcCurseCardPool.addToTop(c);
+                                        srcRareCardPool.addToTop(c);
+                                }
+                                for (AbstractCard c : AbstractDungeon.colorlessCardPool.group) {
+                                        srcColorlessCardPool.addToTop(c);
                                 }
 
                                 srcUncommonCardPool.addToTop(new StaticDischarge());
