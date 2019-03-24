@@ -208,6 +208,8 @@ public abstract class AbstractWtfCard extends CustomCard {
     public AbstractCard makeCopy() {
         AbstractWtfCard c = new AbstractWtfCard(this.cardID, cost, rarity, costUpgradeAmount, damageUpgradeAmount, blockUpgradeAmount, magicUpgradeAmount, wtfMagicUpgradeAmount, baseDamage, baseBlock, baseMagicNumber, baseWtfMagicNumber) { };
         c.componentList.addAll(componentList);
+        c.setCardInfo();
+        c.buildID();
         return c;
     }
 
@@ -226,6 +228,8 @@ public abstract class AbstractWtfCard extends CustomCard {
         c.misc = misc;
         c.name = name;
         c.costForTurn = costForTurn;
+        c.setCardInfo();
+        c.buildID();
         return c;
     }
 }
