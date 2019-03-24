@@ -200,7 +200,7 @@ public abstract class AbstractWtfCard extends CustomCard {
     void actt (AbstractGameAction a) { AbstractDungeon.actionManager.addToTop(a); }
 
     public void setMisc() {
-        String s = String.valueOf(baseDamage) + baseBlock + baseMagicNumber + baseWtfMagicNumber;
+        String s = baseDamage + " " + baseBlock + " " + baseMagicNumber + " " + baseWtfMagicNumber + " " + cost;
         misc = Integer.valueOf(s);
     }
 
