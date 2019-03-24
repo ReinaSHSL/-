@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,6 +27,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 @SpireInitializer
 public class MORECHAOSMOREPOWER implements
@@ -90,6 +92,8 @@ public class MORECHAOSMOREPOWER implements
     }
 
     private static String modID;
+
+    private static Random r = new Random();
 
 
     private static final String MODNAME = "sksaAS(AFa9sf08asr32ESA";
@@ -271,7 +275,22 @@ public class MORECHAOSMOREPOWER implements
 
     @Override
     public void receiveEditCards() {
-
+        for (int i = 0; i < 100; i++) {
+            AbstractCard c = generateCardStartOfGame();
+            c.rarity = AbstractCard.CardRarity.COMMON;
+            BaseMod.addCard(c);
+        }
+        for (int i = 0; i < 100; i++) {
+            AbstractCard c = generateCardStartOfGame();
+            c.rarity = AbstractCard.CardRarity.UNCOMMON;
+            BaseMod.addCard(c);
+        }
+        for (int i = 0; i < 100; i++) {
+            AbstractCard c = generateCardStartOfGame();
+            c.rarity = AbstractCard.CardRarity.RARE;
+            BaseMod.addCard(c);
+        }
+        System.out.println("DUMBASS " + CardLibrary.getCardList(PUTMEOUTOFMYMISERY.Enums.LIBRARY_COLOR).size());
     }
 
 
@@ -357,6 +376,50 @@ public class MORECHAOSMOREPOWER implements
         return c;
     }
 
+    public static AbstractCard generateCardStartOfGame() {
+        ArrayList<Components> allPossibleCardDesc = new ArrayList<>();
+        for (MORECHAOSMOREPOWER.Components cd : MORECHAOSMOREPOWER.Components.values()) {
+            if (!cd.name().startsWith("WHEN_") && (!cd.name().startsWith("POWER_"))) {
+                allPossibleCardDesc.add(cd);
+            }
+        }
+        Collections.shuffle(allPossibleCardDesc);
+        int weight = 80;
+        int loseWeight = 40;
+
+        int cost = r.nextInt((3) + 1);
+        int d = getDamageStart(cost);
+        int b = getBlockStart(cost);
+        int magic = getMagicStart(cost);
+        int wtfMagic = getMagicStart(cost);
+        int du = r.nextInt((5 - 3) + 1) + 3;
+        int bu = r.nextInt((5 - 3) + 1) + 3;
+        int cu = r.nextInt((cost - 0) + 1) + 0;
+        int mu = r.nextInt((1 - 0) + 1) + 0;
+        int muu = r.nextInt((1 - 0) + 1) + 0;
+
+        AbstractWtfCard c = new AbstractWtfCard("",cost, AbstractCard.CardRarity.SPECIAL, cu, du, bu, mu, muu, d, b, magic, wtfMagic) {
+        };
+
+        for (MORECHAOSMOREPOWER.Components de : allPossibleCardDesc) {
+            int rng = r.nextInt((99 - 0) + 1) + 0;
+            if (rng < weight) {
+                c.componentList.add(de);
+                weight -= loseWeight;
+                if (weight <= 0) {
+                    weight = 2;
+                }
+            }
+        }
+        c.setCardInfo();
+        c.resetAttributes();
+        c.magicNumber = c.baseMagicNumber;
+        c.wtfMagicNumber = c.baseWtfMagicNumber;
+        c.buildID();
+        Collections.sort(c.componentList);
+        return c;
+    }
+
     private static int getDamage(int cost) {
         switch (cost) {
             case 0:
@@ -398,4 +461,47 @@ public class MORECHAOSMOREPOWER implements
         }
         return 0;
     }
+
+    private static int getDamageStart(int cost) {
+        switch (cost) {
+            case 0:
+                return r.nextInt((5 - 3) + 1) + 3;
+            case 1:
+                return r.nextInt((12 - 9) + 1) + 9;
+            case 2:
+                return r.nextInt((24 - 17) + 1) + 17;
+            case 3:
+                return r.nextInt((36 - 26) + 1) + 26;
+        }
+        return 0;
+    }
+
+    private static int getBlockStart(int cost) {
+        switch (cost) {
+            case 0:
+                return r.nextInt((5 - 3) + 1) + 3;
+            case 1:
+                return r.nextInt((9 - 7) + 1) + 7;
+            case 2:
+                return r.nextInt((20 - 14) + 1) + 14;
+            case 3:
+                return r.nextInt((34 - 26) + 1) + 26;
+        }
+        return 0;
+    }
+
+    private static int getMagicStart(int cost) {
+        switch (cost) {
+            case 0:
+                return r.nextInt((1 - 1) + 1) + 1;
+            case 1:
+                return r.nextInt((2 - 1) + 1) + 1;
+            case 2:
+                return r.nextInt((3 - 2) + 1) + 2;
+            case 3:
+                return r.nextInt((5 - 3) + 1) + 3;
+        }
+        return 0;
+    }
+
 }
