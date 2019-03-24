@@ -21,7 +21,7 @@ public class TurnsOutMakingCardsThatOnlyExistAtRuntimeKindaSucksPatches {
         public static SpireReturn Prefix(String id, int upgrades, int misc) {
             AbstractCard cardToFind = CardLibrary.cards.get(id);
             if (cardToFind == null) {
-                AbstractWtfCard.makeCopy(id);
+                AbstractWtfCard.makeCopy(id, upgrades, misc);
                 return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();

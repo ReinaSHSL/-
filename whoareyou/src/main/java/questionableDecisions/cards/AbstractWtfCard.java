@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.Madness;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static com.megacrit.cardcrawl.helpers.CardLibrary.getCard;
 import static questionableDecisions.MORECHAOSMOREPOWER.makeID;
 
 public abstract class AbstractWtfCard extends CustomCard {
@@ -58,6 +60,7 @@ public abstract class AbstractWtfCard extends CustomCard {
 
     public String buildID() {
         StringBuilder sbuf = new StringBuilder();
+        sbuf.append("DAB ");
         for (MORECHAOSMOREPOWER.Components c : componentList) {
             sbuf.append(c.name());
             sbuf.append(" ");
@@ -204,7 +207,10 @@ public abstract class AbstractWtfCard extends CustomCard {
         misc = Integer.valueOf(s);
     }
 
-    public static AbstractCard makeCopy(String s) {
-
+    @Override
+    public AbstractCard makeCopy() {
+        AbstractWtfCard c = new AbstractWtfCard(this.cardID, cost, rarity, costUpgradeAmount, damageUpgradeAmount, blockUpgradeAmount, magicUpgradeAmount, wtfMagicUpgradeAmount, baseDamage, baseBlock, baseMagicNumber, baseWtfMagicNumber) { };
+        c.componentList.addAll(componentList);
+        return c;
     }
 }
