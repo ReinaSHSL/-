@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.blue.Defragment;
 import com.megacrit.cardcrawl.cards.blue.StaticDischarge;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.daily.mods.ColorlessCards;
 import com.megacrit.cardcrawl.daily.mods.Diverse;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -17,6 +18,8 @@ import com.megacrit.cardcrawl.shop.ShopScreen;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
@@ -98,7 +101,20 @@ public class NMustBePositiveXfuckingD {
                                         }
 
                                 }
-                                
+
+                                try {
+                                        Method colorlessCards = AbstractDungeon.class.getMethod("addColorlessCards");
+                                        colorlessCards.setAccessible(true);
+                                        colorlessCards.invoke(CardCrawlGame.dungeon);
+
+                                        Method curseCards = AbstractDungeon.class.getMethod("addCurseCards");
+                                        curseCards.setAccessible(true);
+                                        curseCards.invoke(CardCrawlGame.dungeon);
+                                        
+                                } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                                        e.printStackTrace();
+                                }
+
                                 AbstractDungeon.srcColorlessCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
                                 AbstractDungeon.srcCurseCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
                                 AbstractDungeon.srcRareCardPool = new CardGroup(CardGroup.CardGroupType.CARD_POOL);
