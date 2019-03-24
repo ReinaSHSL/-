@@ -5,6 +5,8 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.cards.blue.Defragment;
+import com.megacrit.cardcrawl.cards.blue.StaticDischarge;
 import com.megacrit.cardcrawl.daily.mods.ColorlessCards;
 import com.megacrit.cardcrawl.daily.mods.Diverse;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -17,8 +19,7 @@ import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 
 import java.util.ArrayList;
 
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.returnRandomCurse;
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.srcCurseCardPool;
+import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.*;
 
 
 public class NMustBePositiveXfuckingD {
@@ -116,6 +117,9 @@ public class NMustBePositiveXfuckingD {
                                 for (AbstractCard c : AbstractDungeon.rareCardPool.group) {
                                         srcCurseCardPool.addToTop(c);
                                 }
+
+                                srcUncommonCardPool.addToTop(new StaticDischarge());
+                                srcUncommonCardPool.addToTop(new Defragment());
 
                                 return SpireReturn.Return(null);
                         }
