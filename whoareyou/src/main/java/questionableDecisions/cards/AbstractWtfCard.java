@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -51,6 +52,8 @@ public abstract class AbstractWtfCard extends CustomCard {
         this.wtfMagicNumber = this.baseWtfMagicNumber = wtfMagic;
 
         Collections.sort(componentList);
+
+        setMisc();
     }
 
     public String buildID() {
@@ -195,4 +198,14 @@ public abstract class AbstractWtfCard extends CustomCard {
     void act (AbstractGameAction a) { AbstractDungeon.actionManager.addToBottom(a); }
 
     void actt (AbstractGameAction a) { AbstractDungeon.actionManager.addToTop(a); }
+
+    public void setMisc() {
+        String s = String.valueOf(baseDamage) + baseBlock + baseMagicNumber + baseWtfMagicNumber;
+        misc = Integer.valueOf(s);
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+
+    }
 }
