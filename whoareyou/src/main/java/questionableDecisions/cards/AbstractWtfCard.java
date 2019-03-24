@@ -204,4 +204,7 @@ public abstract class AbstractWtfCard extends CustomCard {
         misc = Integer.valueOf(s);
     }
 
+    public static AbstractCard makeCopy(String s) {
+
+    }
 }
