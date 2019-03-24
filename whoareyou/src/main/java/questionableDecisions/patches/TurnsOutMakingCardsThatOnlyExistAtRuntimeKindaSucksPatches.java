@@ -27,4 +27,22 @@ public class TurnsOutMakingCardsThatOnlyExistAtRuntimeKindaSucksPatches {
             return SpireReturn.Continue();
         }
     }
+
+    @SpirePatch(
+            clz = CardLibrary.class,
+            method = "getCopy",
+            paramtypez = {
+                    String.class,
+            }
+    )
+    public static class GetCopyAndUpgradePatchSingleParam {
+        public static SpireReturn Prefix(String id) {
+            AbstractCard cardToFind = CardLibrary.cards.get(id);
+            if (cardToFind == null) {
+                AbstractWtfCard.makeCopy(id);
+                return SpireReturn.Return(null);
+            }
+            return SpireReturn.Continue();
+        }
+    }
 }
