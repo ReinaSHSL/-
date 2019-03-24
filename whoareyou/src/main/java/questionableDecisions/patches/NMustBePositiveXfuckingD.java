@@ -21,7 +21,7 @@ public class NMustBePositiveXfuckingD {
                 }
         )
         public static class Meth {
-                public static SpireReturn Prefix(CardGroup __instance, Random useless) {
+                public static SpireReturn<AbstractCard> Prefix(CardGroup __instance, Random useless) {
                         if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
                                 return SpireReturn.Return(MORECHAOSMOREPOWER.generateCard());
                         }
@@ -37,7 +37,7 @@ public class NMustBePositiveXfuckingD {
                 }
         )
         public static class Coke {
-                public static SpireReturn Prefix(CardGroup __instance, boolean useless) {
+                public static SpireReturn<AbstractCard> Prefix(CardGroup __instance, boolean useless) {
                         if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
                                 return SpireReturn.Return(MORECHAOSMOREPOWER.generateCard());
                         }
@@ -54,7 +54,7 @@ public class NMustBePositiveXfuckingD {
                 }
         )
         public static class Heroin {
-                public static SpireReturn Prefix(CardGroup __instance, boolean useless, AbstractCard.CardRarity useless2) {
+                public static SpireReturn<AbstractCard> Prefix(CardGroup __instance, boolean useless, AbstractCard.CardRarity useless2) {
                         if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
                                 return SpireReturn.Return(MORECHAOSMOREPOWER.generateCard());
                         }
@@ -71,7 +71,7 @@ public class NMustBePositiveXfuckingD {
                 }
         )
         public static class Fetanyl  {
-                public static SpireReturn Prefix(CardGroup __instance, AbstractCard.CardType useless, boolean useless2) {
+                public static SpireReturn<AbstractCard> Prefix(CardGroup __instance, AbstractCard.CardType useless, boolean useless2) {
                         if (AbstractDungeon.player instanceof PUTMEOUTOFMYMISERY) {
                                 return SpireReturn.Return(MORECHAOSMOREPOWER.generateCard());
                         }
