@@ -132,7 +132,7 @@ public abstract class AbstractWtfCard extends CustomCard {
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DRAW)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
-        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS)) {
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_UPGRADED)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         }
