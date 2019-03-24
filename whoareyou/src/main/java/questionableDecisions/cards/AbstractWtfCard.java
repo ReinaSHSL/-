@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import questionableDecisions.MORECHAOSMOREPOWER;
+import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 
 import java.util.ArrayList;
@@ -35,8 +36,8 @@ public abstract class AbstractWtfCard extends CustomCard {
     public int wtfMagicUpgradeAmount;
     private PowerStrings powerStrings;
 
-    public AbstractWtfCard(String id, int cost, CardRarity rarity, int costUpgradeAmount, int damageUpgradeAmount, int blockUpgradeAmount, int magicUpgradeAmount, int meguMagicUpgradeAmount, int damageAmt, int blockAmt, int magic, int meguMagic) {
-        super(makeID(id), generateName(), null, cost, "", CardType.CURSE, PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY, rarity, CardTarget.NONE);
+    public AbstractWtfCard(String id, int cost, CardRarity rarity, int costUpgradeAmount, int damageUpgradeAmount, int blockUpgradeAmount, int magicUpgradeAmount, int wtfMagicUpgradeAmount, int damageAmt, int blockAmt, int magic, int wtfMagic) {
+        super(id, generateName(), null, cost, "", CardType.CURSE, PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY, rarity, CardTarget.NONE);
 
         this.costUpgradeAmount = costUpgradeAmount;
         this.damageUpgradeAmount = damageUpgradeAmount;
@@ -47,14 +48,21 @@ public abstract class AbstractWtfCard extends CustomCard {
         this.baseDamage = damageAmt;
         this.baseBlock = blockAmt;
         this.magicNumber = this.baseMagicNumber = magic;
-        this.wtfMagicNumber = this.baseWtfMagicNumber = meguMagic;
+        this.wtfMagicNumber = this.baseWtfMagicNumber = wtfMagic;
 
         Collections.sort(componentList);
-        CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(id);
-        if (Settings.language != Settings.GameLanguage.ENG) {
-            this.name = cardStrings.NAME;
-            initializeTitle();
+    }
+
+    public String buildID() {
+        StringBuilder sbuf = new StringBuilder();
+        for (MORECHAOSMOREPOWER.Components c : componentList) {
+            sbuf.append(c.name());
+            sbuf.append(" ");
         }
+        if (sbuf.length() > 0) {
+            return sbuf.toString().substring(0, sbuf.length() - 1);
+        }
+        return sbuf.toString();
     }
 
     public static String generateName() {
@@ -86,9 +94,9 @@ public abstract class AbstractWtfCard extends CustomCard {
     public void setCardInfo() {
         findCardAttributes();
         if (this.type == CardType.POWER) {
-            generatePowercomponentList();
+            generatePowerComponentList();
         } else {
-            generatecomponentList();
+            generateComponentList();
         }
     }
 
@@ -127,7 +135,7 @@ public abstract class AbstractWtfCard extends CustomCard {
         }
     }
 
-    public void generatecomponentList() {
+    public void generateComponentList() {
         StringBuilder sbuf = new StringBuilder();
         CardStrings cardStrings;
         for (MORECHAOSMOREPOWER.Components d : componentList) {
@@ -141,7 +149,7 @@ public abstract class AbstractWtfCard extends CustomCard {
         }
     }
 
-    public void generatePowercomponentList() {
+    public void generatePowerComponentList() {
         StringBuilder sbuf = new StringBuilder();
         CardStrings cardStrings;
         for (MORECHAOSMOREPOWER.Components d : componentList) {
