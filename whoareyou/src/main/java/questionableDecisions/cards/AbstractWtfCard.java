@@ -2,10 +2,7 @@ package questionableDecisions.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -15,6 +12,8 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
@@ -83,14 +82,20 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
             act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_VULN)) {
+            act(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_WEAK)) {
+            act(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
+        }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
             act(new GainBlockAction(p, p, block));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SINGLE_DRAW)) {
-            act(new DrawCardAction(p, baseMagicNumber));
+            act(new DrawCardAction(p, magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DRAW)) {
-            act(new DrawCardAction(p, baseMagicNumber));
+            act(new DrawCardAction(p, magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS)) {
             act(new ChaosTheoryAction());
@@ -135,6 +140,10 @@ public abstract class AbstractWtfCard extends CustomCard {
             type = CardType.ATTACK;
             target = CardTarget.ENEMY;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_WEAK) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_VULN)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SINGLE_DRAW)) {

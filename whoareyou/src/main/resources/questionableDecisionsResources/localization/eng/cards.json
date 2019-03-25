@@ -38,6 +38,12 @@
   "WHY_EXHAUST_CARD": {
     "DESCRIPTION": "Exhaust !M! cards."
   },
+  "WHY_VULN": {
+    "DESCRIPTION": "Apply !M! Vulnerable."
+  },
+  "WHY_WEAK": {
+    "DESCRIPTION": "Apply !M! Weak."
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",
