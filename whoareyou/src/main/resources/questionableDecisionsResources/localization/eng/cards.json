@@ -44,6 +44,9 @@
   "WHY_WEAK": {
     "DESCRIPTION": "Apply !M! Weak."
   },
+  "WHY_POISON": {
+    "DESCRIPTION": "Apply !M! Poison."
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",
