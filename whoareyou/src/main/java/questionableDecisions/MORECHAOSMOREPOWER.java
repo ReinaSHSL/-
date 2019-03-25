@@ -75,6 +75,7 @@ public class MORECHAOSMOREPOWER implements
         WHEN_DRAW_OR_DISCARD,
         WHEN_AFTER_CARD_PLAY,
         WHEN_INITIAL,
+        WHY_DAMAGE,
         WHY_BLOCK,
         WHY_SINGLE_DRAW,
         WHY_MULTI_DRAW,

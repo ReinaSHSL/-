@@ -32,6 +32,9 @@
   "WHY_CHAOS_UPGRADED": {
     "DESCRIPTION": "Generate !M! random cards and add them to your hand."
   },
+  "WHY_DAMAGE": {
+    "DESCRIPTION": "Deal !D! damage."
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",

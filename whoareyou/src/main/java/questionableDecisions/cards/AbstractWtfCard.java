@@ -2,9 +2,11 @@ package questionableDecisions.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -77,6 +79,9 @@ public abstract class AbstractWtfCard extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
+            act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
             act(new GainBlockAction(p, p, block));
         }
@@ -122,7 +127,10 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_INNATE)) {
             isInnate = true;
         }
-        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
+            type = CardType.ATTACK;
+            target = CardTarget.ENEMY;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SINGLE_DRAW)) {
