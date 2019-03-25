@@ -85,6 +85,7 @@ public class MORECHAOSMOREPOWER implements
         WHY_CHAOS_UPGRADED,
         WHY_EXHAUST_CARD,
         WHY_POISON,
+        WHY_RETAIN_BLOCK,
         POWER_NO_MANA,
         POWER_REDUCE_HAND_SIZE,
         POWER_NO_ENERGY,

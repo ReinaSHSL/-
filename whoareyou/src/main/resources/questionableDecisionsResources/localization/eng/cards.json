@@ -47,6 +47,9 @@
   "WHY_POISON": {
     "DESCRIPTION": "Apply !M! Poison."
   },
+  "WHY_RETAIN_BLOCK": {
+    "DESCRIPTION": " Block is not removed at the start of your next !M! turns."
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",

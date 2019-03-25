@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.BlurPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -112,6 +113,9 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PoisonPower(m, p, magicNumber)));
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber)));
+        }
     }
 
     public void setCardInfo() {
@@ -162,6 +166,9 @@ public abstract class AbstractWtfCard extends CustomCard {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
+            type = CardType.SKILL;
+            target = CardTarget.ENEMY;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
             type = CardType.SKILL;
             target = CardTarget.ENEMY;
         }
