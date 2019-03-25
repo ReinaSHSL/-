@@ -91,6 +91,7 @@ public class MORECHAOSMOREPOWER implements
         WHY_FLEX,
         WHY_SPEED,
         WHY_DUALWIELD,
+        WHY_CHAOS_ORBS,
         POWER_NO_MANA,
         POWER_REDUCE_HAND_SIZE,
         POWER_NO_ENERGY,

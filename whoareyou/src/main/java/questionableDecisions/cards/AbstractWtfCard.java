@@ -3,6 +3,7 @@ package questionableDecisions.cards;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.unique.DualWieldAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.*;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
@@ -134,6 +136,11 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DUALWIELD)) {
             act(new DualWieldAction(p, magicNumber));
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_ORBS)) {
+            for (int i = 0; i < magicNumber; i++) {
+                act(new ChannelAction(AbstractOrb.getRandomOrb(true)));
+            }
+        }
     }
 
     public void setCardInfo() {
@@ -199,6 +206,9 @@ public abstract class AbstractWtfCard extends CustomCard {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DUALWIELD)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_ORBS)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         }

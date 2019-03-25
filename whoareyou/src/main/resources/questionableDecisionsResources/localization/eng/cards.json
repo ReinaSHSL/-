@@ -65,7 +65,9 @@
   "WHY_DUALWIELD": {
     "DESCRIPTION": "Choose an Attack or Power card. Add !M! copies of that card into your hand."
   },
-
+  "WHY_CHAOS_ORBS": {
+    "DESCRIPTION": "Channel !M! random orbs."
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",
