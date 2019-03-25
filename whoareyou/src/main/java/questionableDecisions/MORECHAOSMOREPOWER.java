@@ -452,13 +452,13 @@ public class MORECHAOSMOREPOWER implements
     private static int getMagic(int cost) {
         switch (cost) {
             case 0:
-                return AbstractDungeon.cardRng.random(1, 1);
-            case 1:
                 return AbstractDungeon.cardRng.random(1, 2);
-            case 2:
+            case 1:
                 return AbstractDungeon.cardRng.random(2, 3);
+            case 2:
+                return AbstractDungeon.cardRng.random(3, 4);
             case 3:
-                return AbstractDungeon.cardRng.random(3, 5);
+                return AbstractDungeon.cardRng.random(4, 6);
         }
         return 0;
     }
