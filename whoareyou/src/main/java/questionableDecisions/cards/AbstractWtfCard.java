@@ -18,6 +18,7 @@ import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 import static com.megacrit.cardcrawl.helpers.CardLibrary.getCard;
 
@@ -31,6 +32,7 @@ public abstract class AbstractWtfCard extends CustomCard {
     public int magicUpgradeAmount;
     public int costUpgradeAmount;
     public int wtfMagicUpgradeAmount;
+    private static Random r = new Random();
 
     public AbstractWtfCard(String id, int cost, CardRarity rarity, int costUpgradeAmount, int damageUpgradeAmount, int blockUpgradeAmount, int magicUpgradeAmount, int wtfMagicUpgradeAmount, int damageAmt, int blockAmt, int magic, int wtfMagic) {
         super(id, generateName(), null, cost, "", CardType.SKILL, PUTMEOUTOFMYMISERY.Enums.REEEEEEE, rarity, CardTarget.NONE);
@@ -67,9 +69,9 @@ public abstract class AbstractWtfCard extends CustomCard {
         UIStrings nounStrings = CardCrawlGame.languagePack.getUIString("nounList");
         ArrayList<String> adjs = new ArrayList<>(Arrays.asList(cardStrings.EXTENDED_DESCRIPTION));
         ArrayList<String> nouns = new ArrayList<>(Arrays.asList(nounStrings.TEXT));
-        sbuf.append(adjs.get(AbstractDungeon.miscRng.random(adjs.size() - 1)));
+        sbuf.append(adjs.get(r.nextInt((adjs.size() - 1 - 0) + 1) + 0));
         sbuf.append(" ");
-        sbuf.append(nouns.get(AbstractDungeon.miscRng.random(adjs.size() - 1)));
+        sbuf.append(nouns.get(r.nextInt((nouns.size() - 1 - 0) + 1) + 0));
         return sbuf.toString();
     }
 
