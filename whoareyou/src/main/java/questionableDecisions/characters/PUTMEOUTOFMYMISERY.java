@@ -1,6 +1,5 @@
 package questionableDecisions.characters;
 
-import basemod.BaseMod;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.AbstractAnimation;
@@ -32,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import static questionableDecisions.MORECHAOSMOREPOWER.*;
-import static questionableDecisions.characters.PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY;
+import static questionableDecisions.characters.PUTMEOUTOFMYMISERY.Enums.REEEEEEE;
 
 
 public class PUTMEOUTOFMYMISERY extends CustomPlayer {
@@ -46,7 +45,7 @@ public class PUTMEOUTOFMYMISERY extends CustomPlayer {
         @SpireEnum
         public static AbstractPlayer.PlayerClass AAAAAAAAA;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR")
-        public static AbstractCard.CardColor COLOR_GRAY;
+        public static AbstractCard.CardColor REEEEEEE;
         @SpireEnum(name = "DEFAULT_GRAY_COLOR")
         @SuppressWarnings("unused")
         public static CardLibrary.LibraryType LIBRARY_COLOR;
@@ -178,7 +177,7 @@ public class PUTMEOUTOFMYMISERY extends CustomPlayer {
 
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return COLOR_GRAY;
+        return REEEEEEE;
     }
 
 

@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -76,7 +75,6 @@ public class MORECHAOSMOREPOWER implements
         WHEN_DRAW_OR_DISCARD,
         WHEN_AFTER_CARD_PLAY,
         WHEN_INITIAL,
-        WHY_AOE_DAMAGE_X,
         WHY_BLOCK,
         WHY_SINGLE_DRAW,
         WHY_MULTI_DRAW,
@@ -173,9 +171,9 @@ public class MORECHAOSMOREPOWER implements
 
         logger.info("Done subscribing");
 
-        logger.info("Creating the color " + PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY.toString());
+        logger.info("Creating the color " + PUTMEOUTOFMYMISERY.Enums.REEEEEEE.toString());
 
-        BaseMod.addColor(PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
+        BaseMod.addColor(PUTMEOUTOFMYMISERY.Enums.REEEEEEE, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY, SKILL_DEFAULT_GRAY, POWER_DEFAULT_GRAY, ENERGY_ORB_DEFAULT_GRAY,
                 ATTACK_DEFAULT_GRAY_PORTRAIT, SKILL_DEFAULT_GRAY_PORTRAIT, POWER_DEFAULT_GRAY_PORTRAIT,
@@ -275,22 +273,21 @@ public class MORECHAOSMOREPOWER implements
 
     @Override
     public void receiveEditCards() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 500; i++) {
             AbstractCard c = generateCardStartOfGame();
             c.rarity = AbstractCard.CardRarity.COMMON;
             BaseMod.addCard(c);
         }
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 500; i++) {
             AbstractCard c = generateCardStartOfGame();
             c.rarity = AbstractCard.CardRarity.UNCOMMON;
             BaseMod.addCard(c);
         }
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 500; i++) {
             AbstractCard c = generateCardStartOfGame();
             c.rarity = AbstractCard.CardRarity.RARE;
             BaseMod.addCard(c);
         }
-        System.out.println("DUMBASS " + CardLibrary.getCardList(PUTMEOUTOFMYMISERY.Enums.LIBRARY_COLOR).size());
     }
 
 
@@ -371,7 +368,7 @@ public class MORECHAOSMOREPOWER implements
         c.resetAttributes();
         c.magicNumber = c.baseMagicNumber;
         c.wtfMagicNumber = c.baseWtfMagicNumber;
-        c.buildID();
+        c.cardID = c.buildID();
         Collections.sort(c.componentList);
         return c;
     }
@@ -415,7 +412,7 @@ public class MORECHAOSMOREPOWER implements
         c.resetAttributes();
         c.magicNumber = c.baseMagicNumber;
         c.wtfMagicNumber = c.baseWtfMagicNumber;
-        c.buildID();
+        c.cardID = c.buildID();
         Collections.sort(c.componentList);
         return c;
     }

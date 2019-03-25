@@ -4,28 +4,22 @@ import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
-import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.colorless.Madness;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 import static com.megacrit.cardcrawl.helpers.CardLibrary.getCard;
-import static questionableDecisions.MORECHAOSMOREPOWER.makeID;
 
 public abstract class AbstractWtfCard extends CustomCard {
     public int wtfMagicNumber;
@@ -37,10 +31,9 @@ public abstract class AbstractWtfCard extends CustomCard {
     public int magicUpgradeAmount;
     public int costUpgradeAmount;
     public int wtfMagicUpgradeAmount;
-    private PowerStrings powerStrings;
 
     public AbstractWtfCard(String id, int cost, CardRarity rarity, int costUpgradeAmount, int damageUpgradeAmount, int blockUpgradeAmount, int magicUpgradeAmount, int wtfMagicUpgradeAmount, int damageAmt, int blockAmt, int magic, int wtfMagic) {
-        super(id, generateName(), null, cost, "", CardType.CURSE, PUTMEOUTOFMYMISERY.Enums.COLOR_GRAY, rarity, CardTarget.NONE);
+        super(id, generateName(), null, cost, "", CardType.SKILL, PUTMEOUTOFMYMISERY.Enums.REEEEEEE, rarity, CardTarget.NONE);
 
         this.costUpgradeAmount = costUpgradeAmount;
         this.damageUpgradeAmount = damageUpgradeAmount;
@@ -70,6 +63,13 @@ public abstract class AbstractWtfCard extends CustomCard {
 
     public static String generateName() {
         StringBuilder sbuf = new StringBuilder();
+        CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings("adjList");
+        UIStrings  nounStrings = CardCrawlGame.languagePack.getUIString("nounList");
+        ArrayList<String> adjs = new ArrayList<>(Arrays.asList(cardStrings.EXTENDED_DESCRIPTION));
+        ArrayList<String> nouns = new ArrayList<>(Arrays.asList(nounStrings.TEXT));
+        sbuf.append(adjs.get(AbstractDungeon.miscRng.random(adjs.size() - 1)));
+        sbuf.append(" ");
+        sbuf.append(nouns.get(AbstractDungeon.miscRng.random(adjs.size() - 1)));
         return sbuf.toString();
     }
 
@@ -120,14 +120,11 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_INNATE)) {
             isInnate = true;
         }
-        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_AOE_DAMAGE_X)) {
-            type = CardType.ATTACK;
-            target = CardTarget.ALL_ENEMY;
-        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
-            type = CardType.ATTACK;
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+            type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SINGLE_DRAW)) {
-            type = CardType.ATTACK;
+            type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DRAW)) {
             type = CardType.SKILL;
