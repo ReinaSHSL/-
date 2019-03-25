@@ -76,11 +76,13 @@ public class MORECHAOSMOREPOWER implements
         WHEN_AFTER_CARD_PLAY,
         WHEN_INITIAL,
         WHY_DAMAGE,
+
         WHY_BLOCK,
         WHY_SINGLE_DRAW,
         WHY_MULTI_DRAW,
         WHY_CHAOS,
         WHY_CHAOS_UPGRADED,
+        WHY_EXHAUST_CARD,
         POWER_NO_MANA,
         POWER_REDUCE_HAND_SIZE,
         POWER_NO_ENERGY,

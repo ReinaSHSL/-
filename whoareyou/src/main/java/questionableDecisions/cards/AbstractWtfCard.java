@@ -4,6 +4,7 @@ import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -99,6 +100,9 @@ public abstract class AbstractWtfCard extends CustomCard {
                 act(new ChaosTheoryAction());
             }
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_EXHAUST_CARD)) {
+            AbstractDungeon.actionManager.addToBottom(new ExhaustAction(p, p, magicNumber, false));
+        }
     }
 
     public void setCardInfo() {
@@ -140,7 +144,10 @@ public abstract class AbstractWtfCard extends CustomCard {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_UPGRADED)) {
-            type = CardType.POWER;
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_EXHAUST_CARD)) {
+            type = CardType.SKILL;
             target = CardTarget.SELF;
         }
     }
