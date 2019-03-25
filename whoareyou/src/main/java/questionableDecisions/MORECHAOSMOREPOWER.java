@@ -315,6 +315,10 @@ public class MORECHAOSMOREPOWER implements
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/orb.json");
 
+
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/eng/ui.json");
+
         logger.info("Done edittting strings");
     }
 

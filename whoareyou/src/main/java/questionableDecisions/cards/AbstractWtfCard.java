@@ -64,7 +64,7 @@ public abstract class AbstractWtfCard extends CustomCard {
     public static String generateName() {
         StringBuilder sbuf = new StringBuilder();
         CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings("adjList");
-        UIStrings  nounStrings = CardCrawlGame.languagePack.getUIString("nounList");
+        UIStrings nounStrings = CardCrawlGame.languagePack.getUIString("nounList");
         ArrayList<String> adjs = new ArrayList<>(Arrays.asList(cardStrings.EXTENDED_DESCRIPTION));
         ArrayList<String> nouns = new ArrayList<>(Arrays.asList(nounStrings.TEXT));
         sbuf.append(adjs.get(AbstractDungeon.miscRng.random(adjs.size() - 1)));
