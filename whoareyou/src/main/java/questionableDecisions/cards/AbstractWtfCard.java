@@ -3,6 +3,7 @@ package questionableDecisions.cards;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.unique.DualWieldAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -130,6 +131,9 @@ public abstract class AbstractWtfCard extends CustomCard {
             act(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
             act(new ApplyPowerAction(p, p, new LoseDexterityPower(p, magicNumber), magicNumber));
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DUALWIELD)) {
+            act(new DualWieldAction(p, magicNumber));
+        }
     }
 
     public void setCardInfo() {
@@ -192,6 +196,9 @@ public abstract class AbstractWtfCard extends CustomCard {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_FLEX) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SPEED)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DUALWIELD)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         }

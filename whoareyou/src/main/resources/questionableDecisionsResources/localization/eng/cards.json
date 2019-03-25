@@ -62,6 +62,9 @@
   "WHY_SPEED": {
     "DESCRIPTION": "Gain !M! Dexterity until the end of the turn."
   },
+  "WHY_DUALWIELD": {
+    "DESCRIPTION": "Choose an Attack or Power card. Add !M! copies of that card into your hand."
+  },
 
   "adjList":  {
     "EXTENDED_DESCRIPTION": [

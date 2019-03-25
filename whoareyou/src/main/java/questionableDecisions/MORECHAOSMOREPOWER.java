@@ -90,6 +90,7 @@ public class MORECHAOSMOREPOWER implements
         WHY_REROLL_NUMBERS,
         WHY_FLEX,
         WHY_SPEED,
+        WHY_DUALWIELD,
         POWER_NO_MANA,
         POWER_REDUCE_HAND_SIZE,
         POWER_NO_ENERGY,
