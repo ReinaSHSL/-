@@ -137,6 +137,37 @@ public class MORECHAOSMOREPOWER implements
     public static final String THE_DEFAULT_SKELETON_ATLAS = "questionableDecisionsResources/images/char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "questionableDecisionsResources/images/char/defaultCharacter/skeleton.json";
 
+    private static final int DAMAGE_ZERO_MIN = 3;
+    private static final int DAMAGE_ONE_MIN = 9;
+    private static final int DAMAGE_TWO_MIN = 17;
+    private static final int DAMAGE_THREE_MIN = 26;
+
+    private static final int DAMAGE_ZERO_MAX = 5;
+    private static final int DAMAGE_ONE_MAX = 12;
+    private static final int DAMAGE_TWO_MAX = 24;
+    private static final int DAMAGE_THREE_MAX = 36;
+
+    private static final int BLOCK_ZERO_MIN = 3;
+    private static final int BLOCK_ONE_MIN = 7;
+    private static final int BLOCK_TWO_MIN = 14;
+    private static final int BLOCK_THREE_MIN = 24;
+
+    private static final int BLOCK_ZERO_MAX = 5;
+    private static final int BLOCK_ONE_MAX = 9;
+    private static final int BLOCK_TWO_MAX = 20;
+    private static final int BLOCK_THREE_MAX = 36;
+
+    private static final int MAGIC_ZERO_MIN = 1;
+    private static final int MAGIC_ONE_MIN = 2;
+    private static final int MAGIC_TWO_MIN = 3;
+    private static final int MAGIC_THREE_MIN = 4;
+
+    private static final int MAGIC_ZERO_MAX = 2;
+    private static final int MAGIC_ONE_MAX = 3;
+    private static final int MAGIC_TWO_MAX = 4;
+    private static final int MAGIC_THREE_MAX = 6;
+
+
 
 
     public static String makeCardPath(String resourcePath) {
@@ -428,13 +459,13 @@ public class MORECHAOSMOREPOWER implements
     private static int getDamage(int cost) {
         switch (cost) {
             case 0:
-                return AbstractDungeon.cardRng.random(3, 5);
+                return AbstractDungeon.cardRng.random(DAMAGE_ZERO_MIN, DAMAGE_ZERO_MAX);
             case 1:
-                return AbstractDungeon.cardRng.random(9, 12);
+                return AbstractDungeon.cardRng.random(DAMAGE_ONE_MIN, DAMAGE_ONE_MAX);
             case 2:
-                return AbstractDungeon.cardRng.random(17, 24);
+                return AbstractDungeon.cardRng.random(DAMAGE_TWO_MIN, DAMAGE_TWO_MAX);
             case 3:
-                return AbstractDungeon.cardRng.random(26, 36);
+                return AbstractDungeon.cardRng.random(DAMAGE_THREE_MIN, DAMAGE_THREE_MAX);
         }
         return 0;
     }
@@ -442,13 +473,13 @@ public class MORECHAOSMOREPOWER implements
     private static int getBlock(int cost) {
         switch (cost) {
             case 0:
-                return AbstractDungeon.cardRng.random(3, 5);
+                return AbstractDungeon.cardRng.random(BLOCK_ZERO_MIN, BLOCK_ZERO_MAX);
             case 1:
-                return AbstractDungeon.cardRng.random(7, 9);
+                return AbstractDungeon.cardRng.random(BLOCK_ONE_MIN, BLOCK_ONE_MAX);
             case 2:
-                return AbstractDungeon.cardRng.random(14, 20);
+                return AbstractDungeon.cardRng.random(BLOCK_TWO_MIN, BLOCK_TWO_MAX);
             case 3:
-                return AbstractDungeon.cardRng.random(24, 36);
+                return AbstractDungeon.cardRng.random(BLOCK_THREE_MIN, BLOCK_THREE_MAX);
         }
         return 0;
     }
@@ -456,13 +487,13 @@ public class MORECHAOSMOREPOWER implements
     private static int getMagic(int cost) {
         switch (cost) {
             case 0:
-                return AbstractDungeon.cardRng.random(1, 2);
+                return AbstractDungeon.cardRng.random(MAGIC_ZERO_MIN, MAGIC_ZERO_MAX);
             case 1:
-                return AbstractDungeon.cardRng.random(2, 3);
+                return AbstractDungeon.cardRng.random(MAGIC_ONE_MIN, MAGIC_ONE_MAX);
             case 2:
-                return AbstractDungeon.cardRng.random(3, 4);
+                return AbstractDungeon.cardRng.random(MAGIC_TWO_MIN, MAGIC_TWO_MAX);
             case 3:
-                return AbstractDungeon.cardRng.random(4, 6);
+                return AbstractDungeon.cardRng.random(MAGIC_THREE_MIN, MAGIC_THREE_MAX);
         }
         return 0;
     }
@@ -470,13 +501,13 @@ public class MORECHAOSMOREPOWER implements
     private static int getDamageStart(int cost) {
         switch (cost) {
             case 0:
-                return r.nextInt((5 - 3) + 1) + 3;
+                return r.nextInt((DAMAGE_ZERO_MAX - DAMAGE_ZERO_MIN) + 1) + DAMAGE_ZERO_MIN;
             case 1:
-                return r.nextInt((12 - 9) + 1) + 9;
+                return r.nextInt((DAMAGE_ONE_MAX - DAMAGE_ONE_MIN) + 1) + DAMAGE_ONE_MIN;
             case 2:
-                return r.nextInt((24 - 17) + 1) + 17;
+                return r.nextInt((DAMAGE_TWO_MAX - DAMAGE_TWO_MIN) + 1) + DAMAGE_TWO_MIN;
             case 3:
-                return r.nextInt((36 - 26) + 1) + 26;
+                return r.nextInt((DAMAGE_THREE_MAX - DAMAGE_THREE_MIN) + 1) + DAMAGE_THREE_MIN;
         }
         return 0;
     }
@@ -484,13 +515,13 @@ public class MORECHAOSMOREPOWER implements
     private static int getBlockStart(int cost) {
         switch (cost) {
             case 0:
-                return r.nextInt((5 - 3) + 1) + 3;
+                return r.nextInt((BLOCK_ZERO_MAX - BLOCK_ZERO_MIN) + 1) + BLOCK_ZERO_MIN;
             case 1:
-                return r.nextInt((9 - 7) + 1) + 7;
+                return r.nextInt((BLOCK_ONE_MAX - BLOCK_ONE_MIN) + 1) + BLOCK_ONE_MIN;
             case 2:
-                return r.nextInt((20 - 14) + 1) + 14;
+                return r.nextInt((BLOCK_TWO_MAX - BLOCK_TWO_MIN) + 1) + BLOCK_TWO_MIN;
             case 3:
-                return r.nextInt((34 - 26) + 1) + 26;
+                return r.nextInt((BLOCK_THREE_MAX - BLOCK_THREE_MIN) + 1) + BLOCK_THREE_MIN;
         }
         return 0;
     }
@@ -498,13 +529,13 @@ public class MORECHAOSMOREPOWER implements
     private static int getMagicStart(int cost) {
         switch (cost) {
             case 0:
-                return r.nextInt((1 - 1) + 1) + 1;
+                return r.nextInt((MAGIC_ZERO_MAX - MAGIC_ZERO_MIN) + 1) + MAGIC_ZERO_MIN;
             case 1:
-                return r.nextInt((2 - 1) + 1) + 1;
+                return r.nextInt((MAGIC_ONE_MAX - MAGIC_ONE_MIN) + 1) + MAGIC_ONE_MIN;
             case 2:
-                return r.nextInt((3 - 2) + 1) + 2;
+                return r.nextInt((MAGIC_TWO_MAX - MAGIC_TWO_MIN) + 1) + MAGIC_TWO_MIN;
             case 3:
-                return r.nextInt((5 - 3) + 1) + 3;
+                return r.nextInt((MAGIC_THREE_MAX - MAGIC_THREE_MIN) + 1) + MAGIC_THREE_MIN;
         }
         return 0;
     }
