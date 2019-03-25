@@ -53,6 +53,9 @@
   "WHY_REROLL_NUMBERS": {
     "DESCRIPTION": "Reroll all numbers of the cards in your hand."
   },
+  "WHY_MULTI_DAMAGE": {
+    "DESCRIPTION": "Deal !D! damage !M! times."
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",

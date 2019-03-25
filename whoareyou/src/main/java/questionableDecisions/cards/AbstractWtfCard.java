@@ -85,6 +85,11 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
             act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DAMAGE)) {
+            for (int i = 0; i < magicNumber; i++) {
+                act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            }
+        }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_VULN)) {
             act(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
         }
@@ -149,6 +154,9 @@ public abstract class AbstractWtfCard extends CustomCard {
             isInnate = true;
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
+            type = CardType.ATTACK;
+            target = CardTarget.ENEMY;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DAMAGE)) {
             type = CardType.ATTACK;
             target = CardTarget.ENEMY;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
