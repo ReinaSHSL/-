@@ -82,7 +82,10 @@ public abstract class AbstractWtfCard extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
+        if (type == CardType.POWER) {
+            act(new ApplyPowerAction(p, p, ))
+            return;
+        }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
             act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
