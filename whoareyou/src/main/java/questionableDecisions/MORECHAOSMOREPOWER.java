@@ -434,6 +434,30 @@ public class MORECHAOSMOREPOWER implements
         return c;
     }
 
+    public static AbstractCard generatePowerCardStartOfGame(AbstractWtfCard c) {
+        ArrayList<Components> timingList = new ArrayList<>();
+        ArrayList<Components> allPossibleCardDesc = new ArrayList<>();
+        for (MORECHAOSMOREPOWER.Components cd : MORECHAOSMOREPOWER.Components.values()) {
+            if (!cd.name().startsWith("WHEN_") && (!cd.name().startsWith("POWER_"))) {
+                allPossibleCardDesc.add(cd);
+            }
+        }
+        for (MORECHAOSMOREPOWER.Components co : MORECHAOSMOREPOWER.Components.values()) {
+            if (co.name().startsWith("WHEN_")) {
+                timingList.add(co);
+            }
+        }
+        c.componentList.add(timingList.get(r.nextInt((timingList.size() - 1 - 0) + 1) + 0));
+        c.componentList.add(allPossibleCardDesc.get(r.nextInt((allPossibleCardDesc.size() - 1 - 0) + 1) + 0));
+        c.setCardInfo();
+        c.resetAttributes();
+        c.magicNumber = c.baseMagicNumber;
+        c.wtfMagicNumber = c.baseWtfMagicNumber;
+        c.cardID = c.buildID();
+        Collections.sort(c.componentList);
+        return c;
+    }
+
     public static AbstractCard generateCardStartOfGame() {
         ArrayList<Components> allPossibleCardDesc = new ArrayList<>();
         for (MORECHAOSMOREPOWER.Components cd : MORECHAOSMOREPOWER.Components.values()) {
@@ -458,6 +482,10 @@ public class MORECHAOSMOREPOWER implements
 
         AbstractWtfCard c = new AbstractWtfCard("",cost, AbstractCard.CardRarity.SPECIAL, cu, du, bu, mu, muu, d, b, magic, wtfMagic) {
         };
+
+        if (r.nextInt(99) < 10) {
+            return generatePowerCardStartOfGame(c);
+        }
 
         for (MORECHAOSMOREPOWER.Components de : allPossibleCardDesc) {
             int rng = r.nextInt((99 - 0) + 1) + 0;
