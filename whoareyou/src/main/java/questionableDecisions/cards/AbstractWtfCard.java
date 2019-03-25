@@ -20,6 +20,7 @@ import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.actions.RerollHandNumbersAction;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
+import questionableDecisions.powers.PowerBuilder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,7 +84,7 @@ public abstract class AbstractWtfCard extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (type == CardType.POWER) {
-            act(new ApplyPowerAction(p, p, ))
+            act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, magicNumber, false, componentList), magicNumber));
             return;
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {

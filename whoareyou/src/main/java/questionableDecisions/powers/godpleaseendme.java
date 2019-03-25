@@ -5,40 +5,110 @@ import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.unique.DualWieldAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.*;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import questionableDecisions.MORECHAOSMOREPOWER;
+import questionableDecisions.actions.ChaosTheoryAction;
+import questionableDecisions.actions.RerollHandNumbersAction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class godpleaseendme extends AbstractPower {
-    public ArrayList<MORECHAOSMOREPOWER.Components> components = new ArrayList<>();
+    public ArrayList<MORECHAOSMOREPOWER.Components> components;
     private boolean reduceEachTurn;
     private PowerStrings powerStrings;
     ArrayList<ArrayList<MORECHAOSMOREPOWER.Components>> effects = new ArrayList<>();
+    private AbstractPlayer p = AbstractDungeon.player;
+    private AbstractCreature m = AbstractDungeon.getRandomMonster();
+    private int damage;
+    private int magicNumber;
+    private int block;
 
-    public godpleaseendme(String ID, String name, AbstractCreature owner, int amount, MORECHAOSMOREPOWER.Components[] cardDescriptions, boolean reduceEachTurn) {
+    public godpleaseendme(String ID, String name, AbstractCreature owner, int amount, ArrayList<MORECHAOSMOREPOWER.Components> components, boolean reduceEachTurn) {
         this.owner = owner;
         this.amount = amount;
         this.name = name;
         this.ID = ID;
-        this.components.addAll(Arrays.asList(cardDescriptions));
+        this.components = components;
         this.reduceEachTurn = reduceEachTurn;
+        this.damage = amount;
+        this.block = amount;
+        this.magicNumber = amount;
         buildEffects(this.components);
     }
 
-    private void triggerPower(ArrayList<MORECHAOSMOREPOWER.Components> effect) {
-
+    private void triggerPower(ArrayList<MORECHAOSMOREPOWER.Components> componentList) {
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
+            act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DAMAGE)) {
+            for (int i = 0; i < magicNumber; i++) {
+                act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+            }
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_VULN)) {
+            act(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_WEAK)) {
+            act(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+            act(new GainBlockAction(p, p, block));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SINGLE_DRAW)) {
+            act(new DrawCardAction(p, magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DRAW)) {
+            act(new DrawCardAction(p, magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS)) {
+            act(new ChaosTheoryAction());
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_UPGRADED)) {
+            for (int i = 0; i < magicNumber; i++) {
+                act(new ChaosTheoryAction());
+            }
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_EXHAUST_CARD)) {
+            act(new ExhaustAction(p, p, magicNumber, false));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
+            act(new ApplyPowerAction(p, p, new PoisonPower(m, p, magicNumber)));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
+            act(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber)));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_REROLL_NUMBERS)) {
+            act(new RerollHandNumbersAction());
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_FLEX)) {
+            act(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+            act(new ApplyPowerAction(p, p, new LoseStrengthPower(p, magicNumber), magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SPEED)) {
+            act(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
+            act(new ApplyPowerAction(p, p, new LoseDexterityPower(p, magicNumber), magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DUALWIELD)) {
+            act(new DualWieldAction(p, magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_ORBS)) {
+            for (int i = 0; i < magicNumber; i++) {
+                act(new ChannelAction(AbstractOrb.getRandomOrb(true)));
+            }
+        }
     }
 
     public void buildEffects(ArrayList<MORECHAOSMOREPOWER.Components> list) {
