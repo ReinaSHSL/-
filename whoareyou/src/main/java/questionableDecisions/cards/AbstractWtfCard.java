@@ -108,13 +108,16 @@ public abstract class AbstractWtfCard extends CustomCard {
             }
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_EXHAUST_CARD)) {
-            AbstractDungeon.actionManager.addToBottom(new ExhaustAction(p, p, magicNumber, false));
+            act(new ExhaustAction(p, p, magicNumber, false));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new PoisonPower(m, p, magicNumber)));
+            act(new ApplyPowerAction(p, p, new PoisonPower(m, p, magicNumber)));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber)));
+            act(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber)));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_REROLL_NUMBERS)) {
+            act(new RerollHandNumbersAction());
         }
     }
 
@@ -147,12 +150,18 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
             type = CardType.ATTACK;
             target = CardTarget.ENEMY;
-        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
             type = CardType.SKILL;
-            target = CardTarget.SELF;
+            target = CardTarget.ENEMY;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
+            type = CardType.SKILL;
+            target = CardTarget.ENEMY;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_WEAK) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_VULN)) {
             type = CardType.SKILL;
             target = CardTarget.ENEMY;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SINGLE_DRAW)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
@@ -165,12 +174,9 @@ public abstract class AbstractWtfCard extends CustomCard {
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_EXHAUST_CARD)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
-        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_REROLL_NUMBERS)) {
             type = CardType.SKILL;
-            target = CardTarget.ENEMY;
-        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
-            type = CardType.SKILL;
-            target = CardTarget.ENEMY;
+            target = CardTarget.SELF;
         }
     }
 

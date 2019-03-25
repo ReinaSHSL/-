@@ -48,7 +48,10 @@
     "DESCRIPTION": "Apply !M! Poison."
   },
   "WHY_RETAIN_BLOCK": {
-    "DESCRIPTION": " Block is not removed at the start of your next !M! turns."
+    "DESCRIPTION": "Block is not removed at the start of your next !M! turns."
+  },
+  "WHY_REROLL_NUMBERS": {
+    "DESCRIPTION": "Reroll all numbers of the cards in your hand."
   },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
