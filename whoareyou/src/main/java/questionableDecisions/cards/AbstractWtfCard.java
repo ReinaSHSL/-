@@ -82,6 +82,7 @@ public abstract class AbstractWtfCard extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
             act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
@@ -169,6 +170,13 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_INNATE)) {
             isInnate = true;
         }
+        for (MORECHAOSMOREPOWER.Components c : componentList) {
+            if (c.name().startsWith("WHEN_")) {
+                type = CardType.POWER;
+                target = CardTarget.SELF;
+                return;
+            }
+        }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
             type = CardType.ATTACK;
             target = CardTarget.ENEMY;
@@ -247,16 +255,6 @@ public abstract class AbstractWtfCard extends CustomCard {
     public void upgradeWtfMagicNumber(int i) {
         baseWtfMagicNumber += i;
         wtfMagicNumberChanged = true;
-    }
-
-
-    @Override
-    public boolean hasEnoughEnergy() {
-        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_FIRST_CARD)) {
-            return super.hasEnoughEnergy() && AbstractDungeon.actionManager.cardsPlayedThisTurn.isEmpty();
-        } else {
-            return super.hasEnoughEnergy();
-        }
     }
 
     @Override

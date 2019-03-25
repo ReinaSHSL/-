@@ -40,7 +40,6 @@ public class MORECHAOSMOREPOWER implements
     public static final Logger logger = LogManager.getLogger(MORECHAOSMOREPOWER.class.getName());
 
     public enum Components {
-        WHY_FIRST_CARD,
         WHY_INNATE,
         WHY_ETHEREAL,
         WHEN_DAMAGE_GIVE,
@@ -48,11 +47,9 @@ public class MORECHAOSMOREPOWER implements
         WHEN_DAMAGE_FINAL_REC,
         WHEN_DAMAGE_REC,
         WHEN_START_TURN,
-        WHEN_DURING_TURN,
         WHEN_POST_DRAW,
         WHEN_END_OF_TURN,
         WHEN_END_OF_ROUND,
-        WHEN_AOE,
         WHEN_HEAL,
         WHEN_ATTACKED,
         WHEN_ATTACK,
@@ -61,20 +58,15 @@ public class MORECHAOSMOREPOWER implements
         WHEN_PLAY_CARD,
         WHEN_USE_CARD,
         WHEN_PLAY_AFTER,
-        WHEN_SPEC_TRIG,
-        WHEN_DIE,
         WHEN_CHANNEL,
         WHEN_ENERGY_GAIN,
         WHEN_EXHAUST,
-        WHEN_MODIFY_BLOCK,
         WHEN_ON_GAIN_BLOCK,
         WHEN_ON_PLAYER_GAIN_BLOCK,
         WHEN_GAIN_CHARGE,
-        WHEN_REMOVE,
         WHEN_ENERGY_CHARGE,
         WHEN_DRAW_OR_DISCARD,
         WHEN_AFTER_CARD_PLAY,
-        WHEN_INITIAL,
         WHY_DAMAGE,
         WHY_MULTI_DAMAGE,
         WHY_VULN,
@@ -92,12 +84,6 @@ public class MORECHAOSMOREPOWER implements
         WHY_SPEED,
         WHY_DUALWIELD,
         WHY_CHAOS_ORBS,
-        POWER_NO_MANA,
-        POWER_REDUCE_HAND_SIZE,
-        POWER_NO_ENERGY,
-        POWER_RESTORE_HANDSIZE,
-        POWER_FLASH,
-        POWER_REMOVE_THIS_POWER,
         WHY_EXHAUST
     }
 
@@ -401,6 +387,10 @@ public class MORECHAOSMOREPOWER implements
         AbstractWtfCard c = new AbstractWtfCard("",cost, AbstractCard.CardRarity.SPECIAL, cu, du, bu, mu, muu, d, b, magic, wtfMagic) {
         };
 
+        if (AbstractDungeon.cardRng.random(99) < 10) {
+            return generatePowerCard(c);
+        }
+
         for (MORECHAOSMOREPOWER.Components de : allPossibleCardDesc) {
             int rng = AbstractDungeon.cardRng.random(99);
             if (rng < weight) {
@@ -411,6 +401,30 @@ public class MORECHAOSMOREPOWER implements
                 }
             }
         }
+        c.setCardInfo();
+        c.resetAttributes();
+        c.magicNumber = c.baseMagicNumber;
+        c.wtfMagicNumber = c.baseWtfMagicNumber;
+        c.cardID = c.buildID();
+        Collections.sort(c.componentList);
+        return c;
+    }
+
+    public static AbstractCard generatePowerCard(AbstractWtfCard c) {
+        ArrayList<Components> timingList = new ArrayList<>();
+        ArrayList<Components> allPossibleCardDesc = new ArrayList<>();
+        for (MORECHAOSMOREPOWER.Components cd : MORECHAOSMOREPOWER.Components.values()) {
+            if (!cd.name().startsWith("WHEN_") && (!cd.name().startsWith("POWER_"))) {
+                allPossibleCardDesc.add(cd);
+            }
+        }
+        for (MORECHAOSMOREPOWER.Components co : MORECHAOSMOREPOWER.Components.values()) {
+            if (co.name().startsWith("WHEN_")) {
+                timingList.add(co);
+            }
+        }
+        c.componentList.add(timingList.get(AbstractDungeon.cardRng.random(timingList.size() - 1)));
+        c.componentList.add(allPossibleCardDesc.get(AbstractDungeon.cardRng.random(allPossibleCardDesc.size() - 1)));
         c.setCardInfo();
         c.resetAttributes();
         c.magicNumber = c.baseMagicNumber;
