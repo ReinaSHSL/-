@@ -18,6 +18,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
+import questionableDecisions.actions.RerollHandNumbersAction;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 
 import java.util.ArrayList;

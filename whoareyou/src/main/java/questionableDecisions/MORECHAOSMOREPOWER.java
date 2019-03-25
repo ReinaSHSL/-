@@ -459,7 +459,7 @@ public class MORECHAOSMOREPOWER implements
         return c;
     }
 
-    private static int getDamage(int cost) {
+    public static int getDamage(int cost) {
         switch (cost) {
             case 0:
                 return AbstractDungeon.cardRng.random(DAMAGE_ZERO_MIN, DAMAGE_ZERO_MAX);
@@ -473,7 +473,7 @@ public class MORECHAOSMOREPOWER implements
         return 0;
     }
 
-    private static int getBlock(int cost) {
+    public static int getBlock(int cost) {
         switch (cost) {
             case 0:
                 return AbstractDungeon.cardRng.random(BLOCK_ZERO_MIN, BLOCK_ZERO_MAX);
@@ -487,7 +487,7 @@ public class MORECHAOSMOREPOWER implements
         return 0;
     }
 
-    private static int getMagic(int cost) {
+    public static int getMagic(int cost) {
         switch (cost) {
             case 0:
                 return AbstractDungeon.cardRng.random(MAGIC_ZERO_MIN, MAGIC_ZERO_MAX);
