@@ -56,6 +56,13 @@
   "WHY_MULTI_DAMAGE": {
     "DESCRIPTION": "Deal !D! damage !M! times."
   },
+  "WHY_FLEX": {
+    "DESCRIPTION": "Gain !M! Strength until the end of the turn."
+  },
+  "WHY_SPEED": {
+    "DESCRIPTION": "Gain !M! Dexterity until the end of the turn."
+  },
+
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",

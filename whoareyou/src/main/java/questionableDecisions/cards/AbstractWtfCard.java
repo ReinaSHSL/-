@@ -12,10 +12,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.BlurPower;
-import com.megacrit.cardcrawl.powers.PoisonPower;
-import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
+import com.megacrit.cardcrawl.powers.*;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.actions.RerollHandNumbersAction;
@@ -125,6 +122,14 @@ public abstract class AbstractWtfCard extends CustomCard {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_REROLL_NUMBERS)) {
             act(new RerollHandNumbersAction());
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_FLEX)) {
+            act(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
+            act(new ApplyPowerAction(p, p, new LoseStrengthPower(p, magicNumber), magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SPEED)) {
+            act(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
+            act(new ApplyPowerAction(p, p, new LoseDexterityPower(p, magicNumber), magicNumber));
+        }
     }
 
     public void setCardInfo() {
@@ -184,6 +189,9 @@ public abstract class AbstractWtfCard extends CustomCard {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_REROLL_NUMBERS)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_FLEX) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SPEED)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         }
