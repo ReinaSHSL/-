@@ -84,6 +84,14 @@ public abstract class AbstractWtfCard extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (type == CardType.POWER) {
+            if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DAMAGE)) {
+                act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, damage, false, componentList), damage));
+                return;
+            }
+            if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+                act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, block, false, componentList), block));
+                return;
+            }
             act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, magicNumber, false, componentList), magicNumber));
             return;
         }
