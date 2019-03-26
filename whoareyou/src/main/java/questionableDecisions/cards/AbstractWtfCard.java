@@ -19,6 +19,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.*;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
+import questionableDecisions.actions.DoublePowerAction;
 import questionableDecisions.actions.RerollHandNumbersAction;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 import questionableDecisions.powers.PowerBuilder;
@@ -160,9 +161,9 @@ public abstract class AbstractWtfCard extends CustomCard {
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_THORNS)) {
             act(new ApplyPowerAction(p, p, new ThornsPower(p, magicNumber), magicNumber));
-        } 
+        }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DOUBLE_POWER)) {
-
+            act(new DoublePowerAction());
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SCALE)) {
 
