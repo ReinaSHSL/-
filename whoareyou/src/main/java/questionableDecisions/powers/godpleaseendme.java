@@ -171,51 +171,7 @@ public abstract class godpleaseendme extends AbstractPower {
     public boolean checkIfEffectHasTiming(ArrayList<MORECHAOSMOREPOWER.Components> list) {
         return !list.isEmpty() && list.get(0).name().startsWith("WHEN_");
     }
-
-    @Override
-    public float atDamageGive(float damage, DamageInfo.DamageType type) {
-        for (ArrayList<MORECHAOSMOREPOWER.Components> cdList : effects) {
-            if (cdList.get(0).equals(MORECHAOSMOREPOWER.Components.WHEN_DAMAGE_GIVE)) {
-                triggerPower(cdList);
-                return damage;
-            }
-        }
-        return damage;
-    }
-
-    @Override
-    public float atDamageFinalGive(float damage, DamageInfo.DamageType type) {
-        for (ArrayList<MORECHAOSMOREPOWER.Components> cdList : effects) {
-            if (cdList.get(0).equals(MORECHAOSMOREPOWER.Components.WHEN_DAMAGE_GIVE_FINAL)) {
-                triggerPower(cdList);
-                return damage;
-            }
-        }
-        return damage;
-    }
-
-    @Override
-    public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
-        for (ArrayList<MORECHAOSMOREPOWER.Components> cdList : effects) {
-            if (cdList.get(0).equals(MORECHAOSMOREPOWER.Components.WHEN_DAMAGE_FINAL_REC)) {
-                triggerPower(cdList);
-                return damage;
-            }
-        }
-        return damage;
-    }
-
-    @Override
-    public float atDamageReceive(float damage, DamageInfo.DamageType damageType) {
-        for (ArrayList<MORECHAOSMOREPOWER.Components> cdList : effects) {
-            if (cdList.get(0).equals(MORECHAOSMOREPOWER.Components.WHEN_DAMAGE_REC)) {
-                triggerPower(cdList);
-                return damage;
-            }
-        }
-        return damage;
-    }
-
+    
     @Override
     public void atStartOfTurn() {
         for (ArrayList<MORECHAOSMOREPOWER.Components> cdList : effects) {

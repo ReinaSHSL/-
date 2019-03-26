@@ -134,10 +134,10 @@ public abstract class AbstractWtfCard extends CustomCard {
             act(new ExhaustAction(p, p, magicNumber, false));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
-            act(new ApplyPowerAction(m, p, new PoisonPower(m, p, magicNumber)));
+            act(new ApplyPowerAction(m, p, new PoisonPower(m, p, magicNumber), magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
-            act(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber)));
+            act(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber), magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_REROLL_NUMBERS)) {
             act(new RerollHandNumbersAction());

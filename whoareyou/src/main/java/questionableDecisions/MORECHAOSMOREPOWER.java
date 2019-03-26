@@ -42,10 +42,6 @@ public class MORECHAOSMOREPOWER implements
     public enum Components {
         WHY_INNATE,
         WHY_ETHEREAL,
-        WHEN_DAMAGE_GIVE,
-        WHEN_DAMAGE_GIVE_FINAL,
-        WHEN_DAMAGE_FINAL_REC,
-        WHEN_DAMAGE_REC,
         WHEN_START_TURN,
         WHEN_POST_DRAW,
         WHEN_END_OF_TURN,

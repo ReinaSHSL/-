@@ -16,6 +16,8 @@ public class RerollHandNumbersAction extends AbstractGameAction {
             c.baseDamage = MORECHAOSMOREPOWER.getDamage(c.cost);
             c.baseBlock = MORECHAOSMOREPOWER.getBlock(c.cost);
             c.baseMagicNumber = MORECHAOSMOREPOWER.getMagic(c.cost);
+            c.resetAttributes();
+            c.magicNumber = c.baseMagicNumber;
             isDone = true;
         }
     }
