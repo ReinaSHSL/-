@@ -83,6 +83,11 @@ public class MORECHAOSMOREPOWER implements
         WHY_FLEX,
         WHY_SPEED,
         WHY_DUALWIELD,
+        WHY_HAVOC,
+        WHY_THORNS,
+        WHY_DOUBLE_POWER,
+        WHY_SCALE,
+        WHY_RETAIN,
         WHY_CHAOS_ORBS,
         WHY_EXHAUST
     }

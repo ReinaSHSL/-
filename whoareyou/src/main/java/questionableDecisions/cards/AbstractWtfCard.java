@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.unique.DualWieldAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.cards.red.Havoc;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -154,6 +155,22 @@ public abstract class AbstractWtfCard extends CustomCard {
                 act(new ChannelAction(AbstractOrb.getRandomOrb(true)));
             }
         }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_HAVOC)) {
+           act(new PlayTopCardAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), true));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_THORNS)) {
+            act(new ApplyPowerAction(p, p, new ThornsPower(p, magicNumber), magicNumber));
+        } 
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DOUBLE_POWER)) {
+
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SCALE)) {
+
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN)) {
+
+        }
+
     }
 
     public void setCardInfo() {
@@ -229,6 +246,21 @@ public abstract class AbstractWtfCard extends CustomCard {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_ORBS)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_HAVOC)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_THORNS)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DOUBLE_POWER)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SCALE)) {
+            type = CardType.SKILL;
+            target = CardTarget.SELF;
+        } else if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN)) {
             type = CardType.SKILL;
             target = CardTarget.SELF;
         }

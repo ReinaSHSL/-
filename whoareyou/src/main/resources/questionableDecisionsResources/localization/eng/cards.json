@@ -143,6 +143,21 @@
   "WHEN_AFTER_CARD_PLAY":  {
     "DESCRIPTION": "When you play a card, "
   },
+  "WHY_HAVOC": {
+    "DESCRIPTION": "Play the top card of your deck and Exhaust it."
+  },
+  "WHY_THORNS":{
+    "DESCRIPTION":  "Gain !M! Thorns."
+  },
+  "WHY_DOUBLE_POWER": {
+    "DESCRIPTION":  "Double the effectiveness of a random Power."
+  },
+  "WHY_SCALE":{
+    "DESCRIPTION":  "Increase all numbers other than cost of this card by 1."
+  },
+  "WHY_RETAIN": {
+    "DESCRIPTION":  "Retain !M! cards at the end of this turn."
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",
