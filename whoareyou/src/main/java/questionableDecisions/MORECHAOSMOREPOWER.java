@@ -387,6 +387,9 @@ public class MORECHAOSMOREPOWER implements
         AbstractWtfCard c = new AbstractWtfCard("",cost, AbstractCard.CardRarity.SPECIAL, cu, du, bu, mu, muu, d, b, magic, wtfMagic) {
         };
 
+        c.rarity = getRarity();
+        setCardNumbers(c);
+
         if (AbstractDungeon.cardRng.random(99) < 10) {
             return generatePowerCard(c);
         }
@@ -426,6 +429,7 @@ public class MORECHAOSMOREPOWER implements
                 timingList.add(co);
             }
         }
+
         c.componentList.add(timingList.get(AbstractDungeon.cardRng.random(timingList.size() - 1)));
         c.componentList.add(allPossibleCardDesc.get(AbstractDungeon.cardRng.random(allPossibleCardDesc.size() - 1)));
         c.setCardInfo();
@@ -488,6 +492,9 @@ public class MORECHAOSMOREPOWER implements
 
         AbstractWtfCard c = new AbstractWtfCard("",cost, AbstractCard.CardRarity.SPECIAL, cu, du, bu, mu, muu, d, b, magic, wtfMagic) {
         };
+
+        c.rarity = getRarityStart();
+        setCardNumbers(c);
 
         if (r.nextInt(99) < 10) {
             return generatePowerCardStartOfGame(c);
@@ -595,5 +602,55 @@ public class MORECHAOSMOREPOWER implements
         }
         return 0;
     }
+
+    private static AbstractCard.CardRarity getRarity() {
+        int rarityRoll = AbstractDungeon.cardRng.random(2);
+        switch (rarityRoll) {
+            case 0:
+                return AbstractCard.CardRarity.COMMON;
+            case 1:
+                return AbstractCard.CardRarity.UNCOMMON;
+            case 2:
+                return AbstractCard.CardRarity.RARE;
+            default:
+                return AbstractCard.CardRarity.SPECIAL;
+        }
+    }
+
+    private static AbstractCard.CardRarity getRarityStart() {
+        int rarityRoll = r.nextInt((2 - 0) + 1 ) + 0;
+        switch (rarityRoll) {
+            case 0:
+                return AbstractCard.CardRarity.COMMON;
+            case 1:
+                return AbstractCard.CardRarity.UNCOMMON;
+            case 2:
+                return AbstractCard.CardRarity.RARE;
+            default:
+                return AbstractCard.CardRarity.SPECIAL;
+        }
+    }
+
+    private static void setCardNumbers(AbstractWtfCard c) {
+        switch(c.rarity) {
+            case COMMON:
+                c.baseDamage = Math.max(1, c.baseDamage - 3);
+                c.baseBlock = Math.max(1, c.baseBlock - 4);
+                c.baseMagicNumber -= Math.max(1, c.baseMagicNumber - 1);
+                c.baseWtfMagicNumber -= Math.max(1, c.baseWtfMagicNumber - 1);
+                break;
+            case UNCOMMON:
+                break;
+            case RARE:
+                c.baseDamage += 3;
+                c.baseBlock += 3;
+                c.baseMagicNumber += 1;
+                c.baseWtfMagicNumber += 1;
+                break;
+            default:
+                break;
+        }
+    }
+
 
 }
