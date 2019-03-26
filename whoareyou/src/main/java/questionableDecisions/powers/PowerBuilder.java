@@ -9,6 +9,7 @@ import questionableDecisions.MORECHAOSMOREPOWER;
 import java.util.ArrayList;
 
 import static questionableDecisions.MORECHAOSMOREPOWER.makeID;
+import static questionableDecisions.util.TextureLoader.getTexture;
 
 public class PowerBuilder {
 
@@ -23,6 +24,7 @@ public class PowerBuilder {
                 description = desc;
             }
         };
+        p.img = getTexture("questionableDecisionsResources/images/ui/missing_texture.png");
         return p;
     }
 }

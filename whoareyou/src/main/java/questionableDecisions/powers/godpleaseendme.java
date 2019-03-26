@@ -1,6 +1,5 @@
 package questionableDecisions.powers;
 
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
@@ -11,19 +10,16 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.*;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.actions.RerollHandNumbersAction;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public abstract class godpleaseendme extends AbstractPower {
     public ArrayList<MORECHAOSMOREPOWER.Components> components;
@@ -51,61 +47,80 @@ public abstract class godpleaseendme extends AbstractPower {
 
     private void triggerPower(ArrayList<MORECHAOSMOREPOWER.Components> componentList) {
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
+            flash();
             act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DAMAGE)) {
+            flash();
             for (int i = 0; i < magicNumber; i++) {
                 act(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
             }
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_VULN)) {
+            flash();
             act(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_WEAK)) {
+            flash();
             act(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false), magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
+            flash();
             act(new GainBlockAction(p, p, block));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SINGLE_DRAW)) {
+            flash();
             act(new DrawCardAction(p, magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DRAW)) {
+            flash();
             act(new DrawCardAction(p, magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS)) {
+            flash();
             act(new ChaosTheoryAction());
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_UPGRADED)) {
+            flash();
             for (int i = 0; i < magicNumber; i++) {
+                flash();
                 act(new ChaosTheoryAction());
             }
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_EXHAUST_CARD)) {
+            flash();
             act(new ExhaustAction(p, p, magicNumber, false));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
+            flash();
             act(new ApplyPowerAction(p, p, new PoisonPower(m, p, magicNumber)));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
+            flash();
             act(new ApplyPowerAction(p, p, new BlurPower(p, magicNumber)));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_REROLL_NUMBERS)) {
+            flash();
             act(new RerollHandNumbersAction());
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_FLEX)) {
+            flash();
             act(new ApplyPowerAction(p, p, new StrengthPower(p, magicNumber), magicNumber));
             act(new ApplyPowerAction(p, p, new LoseStrengthPower(p, magicNumber), magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SPEED)) {
+            flash();
             act(new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber));
             act(new ApplyPowerAction(p, p, new LoseDexterityPower(p, magicNumber), magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DUALWIELD)) {
+            flash();
             act(new DualWieldAction(p, magicNumber));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_CHAOS_ORBS)) {
+            flash();
             for (int i = 0; i < magicNumber; i++) {
+                flash();
                 act(new ChannelAction(AbstractOrb.getRandomOrb(true)));
             }
         }
@@ -376,8 +391,12 @@ public abstract class godpleaseendme extends AbstractPower {
     }
 
 
-    void act (AbstractGameAction a) { AbstractDungeon.actionManager.addToBottom(a); }
+    void act(AbstractGameAction a) {
+        AbstractDungeon.actionManager.addToBottom(a);
+    }
 
-    void actt (AbstractGameAction a) { AbstractDungeon.actionManager.addToTop(a); }
+    void actt(AbstractGameAction a) {
+        AbstractDungeon.actionManager.addToTop(a);
+    }
 
 }
