@@ -99,7 +99,7 @@
     "DESCRIPTION": "When you are attacked, "
   },
   "WHEN_ATTACK":  {
-    "DESCRIPTION": "when you attack, "
+    "DESCRIPTION": "When you attack, "
   },
   "WHEN_DO_DMG": {
     "DESCRIPTION": "When you deal damage, "
@@ -120,7 +120,7 @@
     "DESCRIPTION": "When you Channel an Orb, "
   },
   "WHEN_ENERGY_GAIN": {
-    "DESCRIPTION": "When you gain [E], "
+    "DESCRIPTION": "When you gain [E] , "
   },
   "WHEN_EXHAUST":  {
     "DESCRIPTION": "When you Exhaust a card, "
@@ -132,7 +132,7 @@
     "DESCRIPTION": "When you gain Block, "
   },
   "WHEN_GAIN_CHARGE": {
-    "DESCRIPTION": "When you gain [E], "
+    "DESCRIPTION": "When you gain [E] , "
   },
   "WHEN_ENERGY_CHARGE":  {
     "DESCRIPTION": "At the start of your turn, "
