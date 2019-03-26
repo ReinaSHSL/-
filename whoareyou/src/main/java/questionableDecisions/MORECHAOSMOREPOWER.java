@@ -414,7 +414,10 @@ public class MORECHAOSMOREPOWER implements
         ArrayList<Components> timingList = new ArrayList<>();
         ArrayList<Components> allPossibleCardDesc = new ArrayList<>();
         for (MORECHAOSMOREPOWER.Components cd : MORECHAOSMOREPOWER.Components.values()) {
-            if (!cd.name().startsWith("WHEN_") && (!cd.name().startsWith("POWER_"))) {
+            if (!cd.name().startsWith("WHEN_") && (!cd.name().startsWith("POWER_"))
+                    && !cd.name().equals(Components.WHY_EXHAUST.name())
+                    && !cd.name().equals(Components.WHY_ETHEREAL.name())
+                    && !cd.name().equals(Components.WHY_INNATE.name())) {
                 allPossibleCardDesc.add(cd);
             }
         }
@@ -440,8 +443,8 @@ public class MORECHAOSMOREPOWER implements
         for (MORECHAOSMOREPOWER.Components cd : MORECHAOSMOREPOWER.Components.values()) {
             if (!cd.name().startsWith("WHEN_") && (!cd.name().startsWith("POWER_"))
                     && !cd.name().equals(Components.WHY_EXHAUST.name())
-                    || !cd.name().equals(Components.WHY_ETHEREAL.name())
-                    || !cd.name().equals(Components.WHY_INNATE.name())) {
+                    && !cd.name().equals(Components.WHY_ETHEREAL.name())
+                    && !cd.name().equals(Components.WHY_INNATE.name())) {
                 allPossibleCardDesc.add(cd);
             }
         }
