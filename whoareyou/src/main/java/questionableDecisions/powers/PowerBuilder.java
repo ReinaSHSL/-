@@ -20,8 +20,12 @@ public class PowerBuilder {
         godpleaseendme p = new godpleaseendme(makeID(ID), name, owner, amount, c, reduce) {
 
             @Override
-            public void updateDescription() {
-                description = desc;
+            public void updateDescription()
+            {
+                String powerDesc = desc.replace("!M!", "%d");
+                powerDesc = powerDesc.replace("!D!", "%d");
+                powerDesc = powerDesc.replace("!B!", "%d");
+                description = String.format(powerDesc, this.amount);
             }
         };
         p.img = getTexture("questionableDecisionsResources/images/ui/missing_texture.png");
