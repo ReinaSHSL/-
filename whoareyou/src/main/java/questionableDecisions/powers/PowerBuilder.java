@@ -25,6 +25,7 @@ public class PowerBuilder {
             }
         };
         p.img = getTexture("questionableDecisionsResources/images/ui/missing_texture.png");
+        p.updateDescription();
         return p;
     }
 }

@@ -131,25 +131,25 @@ public class MORECHAOSMOREPOWER implements
     public static final String THE_DEFAULT_SKELETON_ATLAS = "questionableDecisionsResources/images/char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "questionableDecisionsResources/images/char/defaultCharacter/skeleton.json";
 
-    private static final int DAMAGE_ZERO_MIN = 3;
-    private static final int DAMAGE_ONE_MIN = 9;
-    private static final int DAMAGE_TWO_MIN = 17;
-    private static final int DAMAGE_THREE_MIN = 26;
+    private static final int DAMAGE_ZERO_MIN = 2;
+    private static final int DAMAGE_ONE_MIN = 6;
+    private static final int DAMAGE_TWO_MIN = 10;
+    private static final int DAMAGE_THREE_MIN = 12;
 
-    private static final int DAMAGE_ZERO_MAX = 5;
-    private static final int DAMAGE_ONE_MAX = 12;
-    private static final int DAMAGE_TWO_MAX = 24;
-    private static final int DAMAGE_THREE_MAX = 36;
+    private static final int DAMAGE_ZERO_MAX = 4;
+    private static final int DAMAGE_ONE_MAX = 9;
+    private static final int DAMAGE_TWO_MAX = 13;
+    private static final int DAMAGE_THREE_MAX = 20;
 
-    private static final int BLOCK_ZERO_MIN = 3;
-    private static final int BLOCK_ONE_MIN = 7;
-    private static final int BLOCK_TWO_MIN = 14;
-    private static final int BLOCK_THREE_MIN = 24;
+    private static final int BLOCK_ZERO_MIN = 1;
+    private static final int BLOCK_ONE_MIN = 5;
+    private static final int BLOCK_TWO_MIN = 8;
+    private static final int BLOCK_THREE_MIN = 10;
 
-    private static final int BLOCK_ZERO_MAX = 5;
+    private static final int BLOCK_ZERO_MAX = 3;
     private static final int BLOCK_ONE_MAX = 9;
-    private static final int BLOCK_TWO_MAX = 20;
-    private static final int BLOCK_THREE_MAX = 36;
+    private static final int BLOCK_TWO_MAX = 12;
+    private static final int BLOCK_THREE_MAX = 21;
 
     private static final int MAGIC_ZERO_MIN = 1;
     private static final int MAGIC_ONE_MIN = 2;
