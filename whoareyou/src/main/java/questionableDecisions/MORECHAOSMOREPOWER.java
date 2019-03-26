@@ -302,20 +302,8 @@ public class MORECHAOSMOREPOWER implements
 
     @Override
     public void receiveEditCards() {
-        for (int i = 0; i < 500; i++) {
-            AbstractCard c = generateCardStartOfGame();
-            c.rarity = AbstractCard.CardRarity.COMMON;
-            BaseMod.addCard(c);
-        }
-        for (int i = 0; i < 500; i++) {
-            AbstractCard c = generateCardStartOfGame();
-            c.rarity = AbstractCard.CardRarity.UNCOMMON;
-            BaseMod.addCard(c);
-        }
-        for (int i = 0; i < 500; i++) {
-            AbstractCard c = generateCardStartOfGame();
-            c.rarity = AbstractCard.CardRarity.RARE;
-            BaseMod.addCard(c);
+        for (int i = 0; i < 1500; i++) {
+            BaseMod.addCard(generateCardStartOfGame());
         }
     }
 
@@ -405,6 +393,10 @@ public class MORECHAOSMOREPOWER implements
             }
         }
         c.setCardInfo();
+        if (c.componentList.contains(Components.WHY_MULTI_DAMAGE)) {
+            c.baseDamage = Math.max(6, c.baseDamage - 8);
+            c.baseMagicNumber = Math.max(2, c.baseMagicNumber - 4);
+        }
         c.resetAttributes();
         c.magicNumber = c.baseMagicNumber;
         c.wtfMagicNumber = c.baseWtfMagicNumber;
@@ -433,6 +425,10 @@ public class MORECHAOSMOREPOWER implements
         c.componentList.add(timingList.get(AbstractDungeon.cardRng.random(timingList.size() - 1)));
         c.componentList.add(allPossibleCardDesc.get(AbstractDungeon.cardRng.random(allPossibleCardDesc.size() - 1)));
         c.setCardInfo();
+        if (c.componentList.contains(Components.WHY_MULTI_DAMAGE)) {
+            c.baseDamage = Math.max(6, c.baseDamage - 8);
+            c.baseMagicNumber = Math.max(2, c.baseMagicNumber - 4);
+        }
         c.resetAttributes();
         c.magicNumber = c.baseMagicNumber;
         c.wtfMagicNumber = c.baseWtfMagicNumber;
@@ -460,6 +456,10 @@ public class MORECHAOSMOREPOWER implements
         c.componentList.add(timingList.get(r.nextInt((timingList.size() - 1 - 0) + 1) + 0));
         c.componentList.add(allPossibleCardDesc.get(r.nextInt((allPossibleCardDesc.size() - 1 - 0) + 1) + 0));
         c.setCardInfo();
+        if (c.componentList.contains(Components.WHY_MULTI_DAMAGE)) {
+            c.baseDamage = Math.max(6, c.baseDamage - 8);
+            c.baseMagicNumber = Math.max(2, c.baseMagicNumber - 4);
+        }
         c.resetAttributes();
         c.magicNumber = c.baseMagicNumber;
         c.wtfMagicNumber = c.baseWtfMagicNumber;
@@ -511,6 +511,10 @@ public class MORECHAOSMOREPOWER implements
             }
         }
         c.setCardInfo();
+        if (c.componentList.contains(Components.WHY_MULTI_DAMAGE)) {
+            c.baseDamage = Math.max(6, c.baseDamage - 8);
+            c.baseMagicNumber = Math.max(2, c.baseMagicNumber - 4);
+        }
         c.resetAttributes();
         c.magicNumber = c.baseMagicNumber;
         c.wtfMagicNumber = c.baseWtfMagicNumber;
