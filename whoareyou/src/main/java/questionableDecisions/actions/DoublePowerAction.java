@@ -10,6 +10,7 @@ public class DoublePowerAction extends AbstractGameAction {
     public void update() {
         AbstractPower p = AbstractDungeon.player.powers.get(AbstractDungeon.cardRng.random(AbstractDungeon.player.powers.size() - 1));
         p.amount *= 2;
+        p.flash();
         isDone = true;
     }
 }
