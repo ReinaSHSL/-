@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.unique.DualWieldAction;
+import com.megacrit.cardcrawl.actions.unique.RetainCardsAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -17,7 +18,9 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.*;
 import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
+import questionableDecisions.actions.DoublePowerAction;
 import questionableDecisions.actions.RerollHandNumbersAction;
+import questionableDecisions.actions.ScaleAction;
 
 import java.util.ArrayList;
 
@@ -123,6 +126,26 @@ public abstract class godpleaseendme extends AbstractPower {
                 flash();
                 act(new ChannelAction(AbstractOrb.getRandomOrb(true)));
             }
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_HAVOC)) {
+            flash();
+            act(new PlayTopCardAction(AbstractDungeon.getCurrRoom().monsters.getRandomMonster(null, true, AbstractDungeon.cardRandomRng), true));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_THORNS)) {
+            flash();
+            act(new ApplyPowerAction(p, p, new ThornsPower(p, magicNumber), magicNumber));
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DOUBLE_POWER)) {
+            flash();
+            act(new DoublePowerAction());
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SCALE)) {
+            flash();
+            amount += amount;
+        }
+        if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN)) {
+            flash();
+            act(new RetainCardsAction(p, magicNumber));
         }
     }
 

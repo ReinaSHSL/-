@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.unique.DualWieldAction;
+import com.megacrit.cardcrawl.actions.unique.RetainCardsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.red.Havoc;
@@ -21,6 +22,7 @@ import questionableDecisions.MORECHAOSMOREPOWER;
 import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.actions.DoublePowerAction;
 import questionableDecisions.actions.RerollHandNumbersAction;
+import questionableDecisions.actions.ScaleAction;
 import questionableDecisions.characters.PUTMEOUTOFMYMISERY;
 import questionableDecisions.powers.PowerBuilder;
 
@@ -166,10 +168,10 @@ public abstract class AbstractWtfCard extends CustomCard {
             act(new DoublePowerAction());
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_SCALE)) {
-
+            act(new ScaleAction(this));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN)) {
-
+            act(new RetainCardsAction(p, magicNumber));
         }
 
     }

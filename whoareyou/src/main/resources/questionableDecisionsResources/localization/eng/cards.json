@@ -153,7 +153,7 @@
     "DESCRIPTION":  "Double the effectiveness of a random Power."
   },
   "WHY_SCALE":{
-    "DESCRIPTION":  "Increase all numbers other than cost of this card by 1."
+    "DESCRIPTION":  "Increase all numbers, other than cost, of this card by 1."
   },
   "WHY_RETAIN": {
     "DESCRIPTION":  "Retain !M! cards at the end of this turn."
