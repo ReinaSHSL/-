@@ -96,7 +96,7 @@ public abstract class godpleaseendme extends AbstractPower {
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_POISON)) {
             flash();
-            act(new ApplyPowerAction(p, p, new PoisonPower(m, p, magicNumber)));
+            act(new ApplyPowerAction(m, p, new PoisonPower(m, p, magicNumber)));
         }
         if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_RETAIN_BLOCK)) {
             flash();

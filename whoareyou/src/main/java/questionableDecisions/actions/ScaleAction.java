@@ -19,5 +19,6 @@ public class ScaleAction extends AbstractGameAction {
         if (c instanceof AbstractWtfCard) {
             ((AbstractWtfCard)c).baseWtfMagicNumber += 1;
         }
+        isDone = true;
     }
 }
