@@ -68,6 +68,81 @@
   "WHY_CHAOS_ORBS": {
     "DESCRIPTION": "Channel !M! random orbs."
   },
+  "WHEN_DAMAGE_GIVE": {
+    "DESCRIPTION": "When you deal damage, "
+  },
+  "WHEN_DAMAGE_GIVE_FINAL": {
+    "DESCRIPTION": "When you deal damage, "
+  },
+  "WHEN_DAMAGE_FINAL_REC":  {
+    "DESCRIPTION": "When you receive damage, "
+  },
+  "WHEN_DAMAGE_REC": {
+    "DESCRIPTION": "When you receive damage, "
+  },
+  "WHEN_START_TURN":  {
+    "DESCRIPTION": "At the start of your turn, "
+  },
+  "WHEN_POST_DRAW": {
+    "DESCRIPTION": "At the start of your turn, "
+  },
+  "WHEN_END_OF_TURN":  {
+    "DESCRIPTION": "At the end of your turn, "
+  },
+  "WHEN_END_OF_ROUND": {
+    "DESCRIPTION": "At the end of a turn, "
+  },
+  "WHEN_HEAL":  {
+    "DESCRIPTION": "When you heal, "
+  },
+  "WHEN_ATTACKED": {
+    "DESCRIPTION": "When you are attacked, "
+  },
+  "WHEN_ATTACK":  {
+    "DESCRIPTION": "when you attack, "
+  },
+  "WHEN_DO_DMG": {
+    "DESCRIPTION": "When you deal damage, "
+  },
+  "WHEN_EVOKE":  {
+    "DESCRIPTION": "When you Evoke an Orb, "
+  },
+  "WHEN_PLAY_CARD": {
+    "DESCRIPTION": "When you play a card, "
+  },
+  "WHEN_USE_CARD":  {
+    "DESCRIPTION": "When you play a card, "
+  },
+  "WHEN_PLAY_AFTER": {
+    "DESCRIPTION": "When you play a card, "
+  },
+  "WHEN_CHANNEL":  {
+    "DESCRIPTION": "When you Channel an Orb, "
+  },
+  "WHEN_ENERGY_GAIN": {
+    "DESCRIPTION": "When you gain [E], "
+  },
+  "WHEN_EXHAUST":  {
+    "DESCRIPTION": "When you Exhaust a card, "
+  },
+  "WHEN_ON_GAIN_BLOCK": {
+    "DESCRIPTION": "When you gain Block, "
+  },
+  "WHEN_ON_PLAYER_GAIN_BLOCK":  {
+    "DESCRIPTION": "When you gain Block, "
+  },
+  "WHEN_GAIN_CHARGE": {
+    "DESCRIPTION": "When you gain [E], "
+  },
+  "WHEN_ENERGY_CHARGE":  {
+    "DESCRIPTION": "At the start of your turn, "
+  },
+  "WHEN_DRAW_OR_DISCARD": {
+    "DESCRIPTION": "When you draw or discard a card, "
+  },
+  "WHEN_AFTER_CARD_PLAY":  {
+    "DESCRIPTION": "When you play a card, "
+  },
   "adjList":  {
     "EXTENDED_DESCRIPTION": [
       "Tough",
