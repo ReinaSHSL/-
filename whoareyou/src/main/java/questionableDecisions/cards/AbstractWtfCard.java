@@ -28,6 +28,7 @@ import questionableDecisions.powers.PowerBuilder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Random;
 
 import static com.megacrit.cardcrawl.helpers.CardLibrary.getCard;
@@ -88,12 +89,19 @@ public abstract class AbstractWtfCard extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (type == CardType.POWER) {
-            if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE) || componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DAMAGE)) {
+            if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_DAMAGE)) {
                 act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, damage, false, componentList), damage));
                 return;
             }
             if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_BLOCK)) {
                 act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, block, false, componentList), block));
+                return;
+            }
+            if (componentList.contains(MORECHAOSMOREPOWER.Components.WHY_MULTI_DAMAGE)){
+                HashMap<String, Integer> amounts = new HashMap<String, Integer>();
+                amounts.put("damage", damage);
+                amounts.put("magicNumber", magicNumber);
+                act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, amounts, false, componentList), block));
                 return;
             }
             act(new ApplyPowerAction(p, p, PowerBuilder.buildPower(cardID, name, rawDescription, p, magicNumber, false, componentList), magicNumber));
