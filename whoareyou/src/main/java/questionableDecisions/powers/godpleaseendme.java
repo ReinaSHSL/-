@@ -17,12 +17,14 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.*;
 import questionableDecisions.MORECHAOSMOREPOWER;
+import questionableDecisions.MORECHAOSMOREPOWER.Components;
 import questionableDecisions.actions.ChaosTheoryAction;
 import questionableDecisions.actions.DoublePowerAction;
 import questionableDecisions.actions.RerollHandNumbersAction;
 import questionableDecisions.actions.ScaleAction;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public abstract class godpleaseendme extends AbstractPower {
     public ArrayList<MORECHAOSMOREPOWER.Components> components;
@@ -45,6 +47,20 @@ public abstract class godpleaseendme extends AbstractPower {
         this.damage = amount;
         this.block = amount;
         this.magicNumber = amount;
+        buildEffects(this.components);
+    }
+
+    public godpleaseendme(String ID, String name, AbstractCreature owner, Map<String, Integer> amounts, ArrayList<Components> components,
+            boolean reduceEachTurn) {
+        this.owner = owner;
+        this.amount = amounts.getOrDefault("amount", 0);
+        this.name = name;
+        this.ID = ID;
+        this.components = components;
+        this.reduceEachTurn = reduceEachTurn;
+        this.damage = amounts.getOrDefault("damage", 0);
+        this.block = amounts.getOrDefault("block", 0);
+        this.magicNumber = amounts.getOrDefault("magicNumber", 0);
         buildEffects(this.components);
     }
 
@@ -147,6 +163,7 @@ public abstract class godpleaseendme extends AbstractPower {
             flash();
             act(new RetainCardsAction(p, magicNumber));
         }
+        m = AbstractDungeon.getRandomMonster();
     }
 
     public void buildEffects(ArrayList<MORECHAOSMOREPOWER.Components> list) {
